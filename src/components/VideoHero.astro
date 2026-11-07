@@ -37,7 +37,7 @@ import { SITE_CONFIG } from '../data/siteData';
   <!-- Real HTML Text & Action Buttons -->
   <div class="hero-content">
     <!-- Star Rating line -->
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 text-xs sm:text-sm font-medium tracking-wide text-amber-200">
+    <div class="hero-anim-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 text-xs sm:text-sm font-medium tracking-wide text-amber-200">
       <span class="text-amber-300 font-bold tracking-wider" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#189;</span>
       <span>4.7 &bull; 218 Google Reviews</span>
       <span class="text-white/40 hidden sm:inline">&bull;</span>
@@ -45,17 +45,17 @@ import { SITE_CONFIG } from '../data/siteData';
     </div>
 
     <!-- Main H1 targeting Mahad local beauty & academy searches -->
-    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white max-w-4xl mx-auto leading-[1.12]">
+    <h1 class="hero-anim-2 text-3xl sm:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white max-w-4xl mx-auto leading-[1.12]">
       Beauty Parlour, Makeup Artist &amp; Academy in Mahad
     </h1>
 
     <!-- Location & Brand Subtext -->
-    <p class="mt-4 sm:mt-5 text-base sm:text-lg lg:text-xl text-rose-100/90 max-w-2xl mx-auto font-normal leading-relaxed">
+    <p class="hero-anim-3 mt-4 sm:mt-5 text-base sm:text-lg lg:text-xl text-rose-100/90 max-w-2xl mx-auto font-normal leading-relaxed">
       <strong>{SITE_CONFIG.businessName}</strong> &mdash; M.G Road, Bazar Peth, Navipeth, Mahad, Maharashtra. Skin-tone-matched makeup, hydra facials, mehndi artistry &amp; hands-on beauty courses.
     </p>
 
     <!-- CTAs: WhatsApp, Directions, Call -->
-    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-lg mx-auto" role="group" aria-label="Contact options">
+    <div class="hero-anim-4 mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-lg mx-auto" role="group" aria-label="Contact options">
       <a
         href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(SITE_CONFIG.whatsappDefaultMessage)}`}
         target="_blank"
@@ -93,7 +93,7 @@ import { SITE_CONFIG } from '../data/siteData';
     </div>
 
     <!-- Quick Hours note -->
-    <p class="mt-5 text-xs text-rose-200/80">
+    <p class="hero-anim-5 mt-5 text-xs text-rose-200/80">
       Open Daily 10:00 AM &ndash; 8:00 PM (Opens 9:00 AM Sundays)
     </p>
   </div>

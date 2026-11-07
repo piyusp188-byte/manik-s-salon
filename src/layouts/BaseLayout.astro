@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import MobileBar from '../components/MobileBar.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import EnquiryModal from '../components/EnquiryModal.astro';
+import PageLoader from '../components/PageLoader.astro';
 import { SITE_CONFIG } from '../data/siteData';
 
 interface Props {
@@ -150,6 +151,9 @@ const allSchemas = schema
     ))}
   </head>
   <body class="bg-[#FFF9F5] text-[#2B2024] font-sans antialiased selection:bg-[#6B2D5E]/20 selection:text-[#6B2D5E] min-h-screen flex flex-col pb-16 md:pb-0">
+    <!-- Page Entrance Preloader Animation -->
+    <PageLoader />
+
     <!-- Skip to main content for accessibility -->
     <a 
       href="#main-content" 
@@ -186,6 +190,26 @@ const allSchemas = schema
           if (firstInput) firstInput.focus();
         }
       };
+
+      // Scroll Reveal IntersectionObserver
+      if ('IntersectionObserver' in window) {
+        const revealObs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              revealObs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+          revealObs.observe(el);
+        });
+      } else {
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+          el.classList.add('visible');
+        });
+      }
     </script>
   </body>
 </html>
