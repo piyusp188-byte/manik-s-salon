@@ -1,0 +1,17 @@
+{
+  "name": "Monik's Salon & Academy",
+  "short_name": "Monik's Salon",
+  "description": "Beauty parlour and makeup academy in Mahad, Maharashtra",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF9F5",
+  "theme_color": "#6B2D5E",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+

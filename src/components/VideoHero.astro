@@ -2,11 +2,18 @@
 import { SITE_CONFIG } from '../data/siteData';
 ---
 
+<!-- 
+  EDITORIAL DISCLAIMER:
+  The background video in the hero section is used for ambient visual effect only.
+  It does not depict Monik's clients, staff, premises, or services.
+  Real photography and video of Monik's Salon & Academy will replace ambient stock footage once supplied by the owner.
+-->
+
 <section
   class="video-hero"
   aria-label="Monik's Salon & Academy — beauty parlour and academy in Mahad"
 >
-  <!-- Decorative ambient video loop (hidden from assistive tech) -->
+  <!-- Decorative continuous ambient video loop (autoplay, muted, continuous playback) -->
   <video
     id="hero-video"
     class="hero-video"
@@ -14,13 +21,14 @@ import { SITE_CONFIG } from '../data/siteData';
     muted
     loop
     playsinline
-    preload="metadata"
+    webkit-playsinline
+    preload="auto"
     poster="/images/hero/poster-desktop.webp"
     aria-hidden="true"
     tabindex="-1"
   >
-    <source id="src-desktop-webm" src="/video/hero-desktop.webm" type="video/webm" />
-    <source id="src-desktop-mp4" src="/video/hero-desktop.mp4" type="video/mp4" />
+    <source src="/video/hero-desktop.mp4" type="video/mp4" />
+    <source src="/video/hero-desktop.webm" type="video/webm" />
   </video>
 
   <!-- Dark plum gradient overlay calibrated for WCAG AAA text contrast -->
@@ -89,123 +97,64 @@ import { SITE_CONFIG } from '../data/siteData';
       Open Daily 10:00 AM &ndash; 8:00 PM (Opens 9:00 AM Sundays)
     </p>
   </div>
-
-  <!-- Accessible Pause/Play Button (WCAG 2.2.2 requirement for motion > 5s) -->
-  <button
-    id="hero-pause-btn"
-    class="hero-pause-btn"
-    type="button"
-    aria-label="Pause background video"
-    aria-pressed="false"
-  >
-    <svg id="hero-pause-icon" class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true">
-      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-    </svg>
-    <svg id="hero-play-icon" class="w-4 h-4 fill-current hidden" viewBox="0 0 20 20" aria-hidden="true">
-      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-    </svg>
-  </button>
 </section>
 
-<!-- Client script for responsive video source swapping, accessibility & power saving -->
+<!-- Continuous, unpaused background video script -->
 <script>
   (function () {
     const video = document.getElementById('hero-video') as HTMLVideoElement | null;
-    const pauseBtn = document.getElementById('hero-pause-btn');
-    const pauseIcon = document.getElementById('hero-pause-icon');
-    const playIcon = document.getElementById('hero-play-icon');
-
     if (!video) return;
 
-    // 1. Check prefers-reduced-motion
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Set muted attributes unconditionally (mandated by all browsers for continuous autoplay)
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
 
-    // 2. Check Save-Data header or slow connection
-    const nav = navigator as any;
-    const saveData = nav.connection && nav.connection.saveData;
-    const slowConnection = nav.connection && ['slow-2g', '2g', '3g'].includes(nav.connection.effectiveType);
-
-    if (prefersReduced || saveData || slowConnection) {
-      video.pause();
-      video.removeAttribute('autoplay');
-      if (pauseBtn) pauseBtn.style.display = 'none';
-      return;
-    }
-
-    // 3. Swap to lightweight mobile crop video on screens < 768px
+    // On narrow screens (< 768px), swap to the lightweight mobile portrait crop
     if (window.innerWidth < 768) {
       video.poster = '/images/hero/poster-mobile.webp';
       video.innerHTML = `
-        <source src="/video/hero-mobile.webm" type="video/webm">
         <source src="/video/hero-mobile.mp4" type="video/mp4">
+        <source src="/video/hero-mobile.webm" type="video/webm">
       `;
       video.load();
     }
 
-    // 4. Handle autoplay catch (iOS Low Power Mode gracefully falls back to poster)
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        if (pauseIcon && playIcon) {
-          pauseIcon.classList.add('hidden');
-          playIcon.classList.remove('hidden');
-        }
-        if (pauseBtn) {
-          pauseBtn.setAttribute('aria-label', 'Play background video');
-          pauseBtn.setAttribute('aria-pressed', 'true');
-        }
-      });
-    }
-
-    // 5. IntersectionObserver: pause video when scrolled out of view to save battery/data
-    if ('IntersectionObserver' in window) {
-      const heroSection = video.closest('.video-hero');
-      if (heroSection) {
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              if (video.paused && pauseBtn?.getAttribute('aria-pressed') !== 'true') {
-                video.play().catch(() => {});
-              }
-            } else {
-              if (!video.paused) {
-                video.pause();
-              }
-            }
-          },
-          { threshold: 0.15 }
-        );
-        observer.observe(heroSection);
+    // Continuous play enforcer
+    const forcePlay = () => {
+      video.muted = true;
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise.catch(() => {
+          // If browser policy delays unmuted autoplay, trigger on any user scroll/tap immediately
+          const trigger = () => {
+            video.muted = true;
+            video.play().catch(() => {});
+            ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+              window.removeEventListener(evt, trigger);
+            });
+          };
+          ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+            window.addEventListener(evt, trigger, { passive: true, once: true });
+          });
+        });
       }
-    }
+    };
 
-    // 6. Page Visibility API: pause when tab is minimized or switched
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        video.pause();
-      } else if (pauseBtn?.getAttribute('aria-pressed') !== 'true') {
-        video.play().catch(() => {});
-      }
+    // Continuous loop enforcer
+    video.addEventListener('ended', () => {
+      video.currentTime = 0;
+      forcePlay();
     });
 
-    // 7. Manual Pause / Play control (WCAG 2.2.2)
-    if (pauseBtn && pauseIcon && playIcon) {
-      pauseBtn.addEventListener('click', () => {
-        if (video.paused) {
-          video.play().then(() => {
-            pauseIcon.classList.remove('hidden');
-            playIcon.classList.add('hidden');
-            pauseBtn.setAttribute('aria-label', 'Pause background video');
-            pauseBtn.setAttribute('aria-pressed', 'false');
-          }).catch(() => {});
-        } else {
-          video.pause();
-          pauseIcon.classList.add('hidden');
-          playIcon.classList.remove('hidden');
-          pauseBtn.setAttribute('aria-label', 'Play background video');
-          pauseBtn.setAttribute('aria-pressed', 'true');
-        }
-      });
+    if (video.readyState >= 2) {
+      forcePlay();
+    } else {
+      video.addEventListener('loadeddata', forcePlay, { once: true });
+      video.addEventListener('canplay', forcePlay, { once: true });
+      forcePlay();
     }
   })();
 </script>
