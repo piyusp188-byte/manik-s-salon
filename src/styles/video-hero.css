@@ -19,9 +19,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left center;
+  object-position: center center;
   z-index: 0;
   pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .hero-video {
+    /* Favor the right side on mobile screens so the hair washing basin and lather are clearly in view */
+    object-position: 60% center;
+  }
 }
 
 /* Dark plum gradient overlay calibrated for WCAG AAA text contrast */
