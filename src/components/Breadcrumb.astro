@@ -22,19 +22,19 @@ const breadcrumbSchema = {
 };
 ---
 
-<nav aria-label="Breadcrumb" class="py-3 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-xs text-stone-400">
+<nav aria-label="Breadcrumb" class="py-3.5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-xs text-[#5A4553]">
   <ol class="flex items-center flex-wrap gap-2">
     {items.map((item, index) => {
       const isLast = index === items.length - 1;
       return (
         <li class="flex items-center gap-2">
-          {index > 0 && <span class="text-stone-600">&sol;</span>}
+          {index > 0 && <span class="text-[#E8D9DE]">&sol;</span>}
           {isLast ? (
-            <span class="text-amber-300 font-semibold" aria-current="page">
+            <span class="text-[#6B2D5E] font-bold" aria-current="page">
               {item.name}
             </span>
           ) : (
-            <a href={item.url} class="hover:text-amber-200 transition-colors">
+            <a href={item.url} class="hover:text-[#6B2D5E] transition-colors">
               {item.name}
             </a>
           )}

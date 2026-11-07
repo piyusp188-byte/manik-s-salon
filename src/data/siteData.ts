@@ -334,3 +334,36 @@ export const REQUIRED_PHOTOS_LIST = [
   { category: "Academy Classes", description: "Real photos of classroom sessions, students practicing mehndi and makeup" },
   { category: "Salon Interior & Team", description: "Photographs of the salon entrance on M.G Road, reception, and Monika ma'am with staff" }
 ];
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export const FAQS: FAQItem[] = [
+  {
+    question: "Where is Monik's Salon & Academy located?",
+    answer: "We are located at M.G Road, Bazar Peth, near Ratrani, inside Budget Food Store, Navipeth, Mahad, Maharashtra 402301."
+  },
+  {
+    question: "What are your opening hours?",
+    answer: "We are open daily from 10:00 AM to 8:00 PM (opening early at 9:00 AM on Sundays). Opening hours may vary during festive seasons like Diwali, so please contact us in advance to confirm."
+  },
+  {
+    question: "Do you accept walk-ins or is an appointment required?",
+    answer: "Walk-ins are welcome subject to stylist availability, but we strongly recommend booking in advance via WhatsApp or phone (+91 84460 03385) to guarantee your preferred slot."
+  },
+  {
+    question: "What beauty courses does Monik's Academy offer?",
+    answer: "Monik's Academy offers practical beauty courses including Basic Makeup Certification, Self-Makeup Masterclasses, Basic Mehndi Artistry, and Skin Care & Hair Care live demo sessions."
+  },
+  {
+    question: "Are the academy courses suitable for complete beginners?",
+    answer: "Yes, absolutely! Our courses are designed specifically for beginners. As our students say in their reviews, you are 'taught like a friend, not a teacher' in a patient and welcoming environment."
+  },
+  {
+    question: "How can I inquire about bridal makeup packages and pricing?",
+    answer: "Every bride and occasion is unique. You can click 'WhatsApp Us' or call +91 84460 03385 for a complimentary consultation and personalized package details tailored to your wedding functions."
+  }
+];
+

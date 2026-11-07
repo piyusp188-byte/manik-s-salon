@@ -50,30 +50,30 @@ const courseSchemas = COURSES.map((course) => ({
   <Breadcrumb items={breadcrumbs} />
 
   <!-- Academy Page Hero -->
-  <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-stone-800/80">
-    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full">
+  <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-[#E8D9DE]" aria-labelledby="academy-title">
+    <span class="px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#6B2D5E] bg-[#FBEFF1] border border-[#E8D9DE] rounded-full">
       Hands-on Beauty Training
     </span>
-    <h1 class="text-3xl sm:text-5xl font-serif font-bold text-stone-100 mt-4">
+    <h1 id="academy-title" class="text-3xl sm:text-5xl font-display font-bold text-[#2B2024] mt-4">
       Learn Beauty at Monik's Academy, Mahad
     </h1>
-    <p class="text-xs sm:text-sm text-stone-300 max-w-2xl mx-auto mt-3 leading-relaxed">
+    <p class="text-sm sm:text-base text-[#5A4553] max-w-2xl mx-auto mt-3 leading-relaxed">
       Empowering women with real, practical skills in makeup artistry, henna design, and skincare. Beginner-friendly training taught with patience, clarity, and genuine encouragement.
     </p>
 
     <!-- Key Academy Pillars -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mt-8 text-left text-xs">
-      <div class="p-3.5 rounded-xl bg-stone-900/60 border border-stone-800">
-        <span class="text-amber-300 font-semibold block mb-0.5">Taught Like a Friend</span>
-        <span class="text-stone-400">Zero intimidation; comfortable learning environment</span>
+      <div class="p-4 rounded-2xl bg-white border border-[#E8D9DE] shadow-sm">
+        <span class="text-[#6B2D5E] font-bold block mb-1">Taught Like a Friend</span>
+        <span class="text-[#5A4553]">Zero intimidation; comfortable learning environment</span>
       </div>
-      <div class="p-3.5 rounded-xl bg-stone-900/60 border border-stone-800">
-        <span class="text-amber-300 font-semibold block mb-0.5">Hands-On Practice</span>
-        <span class="text-stone-400">Step-by-step guidance on live models &amp; tools</span>
+      <div class="p-4 rounded-2xl bg-white border border-[#E8D9DE] shadow-sm">
+        <span class="text-[#6B2D5E] font-bold block mb-1">Hands-On Practice</span>
+        <span class="text-[#5A4553]">Step-by-step guidance on live models &amp; tools</span>
       </div>
-      <div class="p-3.5 rounded-xl bg-stone-900/60 border border-stone-800">
-        <span class="text-amber-300 font-semibold block mb-0.5">Pocket-Friendly Fees</span>
-        <span class="text-stone-400">High-value education accessible to everyone</span>
+      <div class="p-4 rounded-2xl bg-white border border-[#E8D9DE] shadow-sm">
+        <span class="text-[#6B2D5E] font-bold block mb-1">Pocket-Friendly Fees</span>
+        <span class="text-[#5A4553]">High-value education accessible to everyone</span>
       </div>
     </div>
   </section>
@@ -88,58 +88,58 @@ const courseSchemas = COURSES.map((course) => ({
   </section>
 
   <!-- Student Reviews on Academy -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-stone-800/80">
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#E8D9DE]" aria-labelledby="student-reviews">
     <div class="text-center max-w-2xl mx-auto mb-10">
-      <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full">
+      <span class="px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#6B2D5E] bg-[#FBEFF1] border border-[#E8D9DE] rounded-full">
         Real Student Voices
       </span>
-      <h2 class="text-2xl sm:text-3xl font-serif font-bold text-stone-100 mt-3">
+      <h2 id="student-reviews" class="text-3xl sm:text-4xl font-display font-bold text-[#2B2024] mt-3">
         What Our Academy Students Say
       </h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {TESTIMONIALS.map((t) => (
-        <div class="p-6 rounded-2xl bg-stone-900/40 border border-stone-800 flex flex-col justify-between">
+        <div class="p-6 rounded-2xl bg-white border border-[#E8D9DE] flex flex-col justify-between shadow-sm">
           <div>
-            <div class="flex text-amber-400 mb-2">
+            <div class="flex text-[#E8A020] mb-2" aria-hidden="true">
               {Array.from({ length: 5 }).map(() => (
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               ))}
             </div>
-            <p class="text-xs sm:text-sm text-stone-300 italic mb-3">
+            <p class="text-xs sm:text-sm text-[#5A4553] italic mb-3">
               &ldquo;{t.text}&rdquo;
             </p>
           </div>
-          <div class="pt-3 border-t border-stone-800 text-xs">
-            <span class="block font-semibold text-stone-100">{t.author}</span>
-            <span class="block text-[11px] text-amber-300">{t.serviceMentioned}</span>
+          <div class="pt-3 border-t border-[#E8D9DE]/60 text-xs">
+            <span class="block font-bold text-[#2B2024]">{t.author}</span>
+            <span class="block text-[11px] text-[#C4845A] font-semibold">{t.serviceMentioned}</span>
           </div>
         </div>
       ))}
     </div>
 
     <!-- Enrolment CTA -->
-    <div class="mt-12 text-center p-8 rounded-2xl bg-stone-900/60 border border-amber-500/30 max-w-2xl mx-auto">
-      <h3 class="text-xl font-serif font-bold text-stone-100">
+    <div class="mt-12 text-center p-8 sm:p-10 rounded-3xl bg-[#FBEFF1] border border-[#E8D9DE] max-w-2xl mx-auto">
+      <h3 class="text-2xl font-display font-bold text-[#2B2024]">
         Ready to Join the Next Academy Batch?
       </h3>
-      <p class="text-xs sm:text-sm text-stone-300 mt-2">
+      <p class="text-xs sm:text-sm text-[#5A4553] mt-2">
         Contact us to know current batch dates, fee structure, and syllabus details.
       </p>
       <div class="mt-6 flex flex-wrap justify-center gap-3">
         <button
           type="button"
           onclick="window.openEnquiryModal('General Academy Course Admission')"
-          class="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-stone-950 bg-gradient-to-r from-amber-300 to-amber-500 hover:from-amber-200 hover:to-amber-400 cursor-pointer"
+          class="px-7 py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#6B2D5E] hover:bg-[#4E1E45] shadow-sm cursor-pointer transition-all"
         >
           Enquire via WhatsApp
         </button>
         <a
           href={`tel:${SITE_CONFIG.phoneTel}`}
-          class="px-6 py-2.5 rounded-xl font-semibold text-xs text-stone-200 bg-stone-900 border border-stone-700 hover:border-amber-400"
+          class="px-7 py-3 rounded-xl font-bold text-xs text-[#2B2024] bg-white border border-[#E8D9DE] hover:bg-rose-50"
         >
           Call +91 84460 03385
         </a>

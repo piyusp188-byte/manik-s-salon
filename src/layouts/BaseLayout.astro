@@ -1,8 +1,10 @@
 ---
 import '../styles/global.css';
+import '../styles/video-hero.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileBar from '../components/MobileBar.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import EnquiryModal from '../components/EnquiryModal.astro';
 import { SITE_CONFIG } from '../data/siteData';
 
@@ -15,9 +17,9 @@ interface Props {
 }
 
 const {
-  title = `${SITE_CONFIG.businessName} | Beauty Salon & Makeup Academy in Mahad`,
+  title = `${SITE_CONFIG.businessName} | Beauty Parlour, Makeup Artist & Academy in Mahad`,
   description = "Monik's Salon & Academy in Mahad, Maharashtra. Expert makeup artist, bridal makeup, hydra facials, mehndi designs, hair care, and professional beauty academy courses. Rated 4.7★ on Google. Call +91 84460 03385.",
-  image = "/images/og-default.jpg",
+  image = "/og-hero.jpg",
   canonicalUrl = Astro.url.href,
   schema
 } = Astro.props;
@@ -33,7 +35,7 @@ const defaultLocalBusinessSchema = {
   "priceRange": "$$",
   "currenciesAccepted": "INR",
   "paymentAccepted": "Cash, UPI",
-  "image": "https://monikssalon.com/logo.svg",
+  "image": "https://monikssalon.com/og-hero.jpg",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": SITE_CONFIG.address.street,
@@ -99,7 +101,7 @@ const allSchemas = schema
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#0c0a09" />
+    <meta name="theme-color" content="#6B2D5E" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -117,11 +119,27 @@ const allSchemas = schema
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <!-- Google Fonts Preconnect & Stylesheet -->
+    <!-- High-Priority LCP Hero Poster Preload -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero/poster-desktop.webp"
+      fetchpriority="high"
+      media="(min-width: 768px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero/poster-mobile.webp"
+      fetchpriority="high"
+      media="(max-width: 767px)"
+    />
+
+    <!-- Google Fonts Preconnect & Stylesheet: Cormorant Garamond (Display) + Plus Jakarta Sans (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link 
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" 
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" 
       rel="stylesheet" 
     />
 
@@ -130,11 +148,11 @@ const allSchemas = schema
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
     ))}
   </head>
-  <body class="bg-stone-950 text-stone-100 font-sans antialiased selection:bg-amber-500/30 selection:text-amber-200 min-h-screen flex flex-col pb-16 md:pb-0">
+  <body class="bg-[#FFF9F5] text-[#2B2024] font-sans antialiased selection:bg-[#6B2D5E]/20 selection:text-[#6B2D5E] min-h-screen flex flex-col pb-16 md:pb-0">
     <!-- Skip to main content for accessibility -->
     <a 
       href="#main-content" 
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-amber-500 text-stone-950 font-bold px-4 py-2 rounded-md shadow-lg"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-[#6B2D5E] text-white font-bold px-4 py-2 rounded-md shadow-lg outline-none ring-2 ring-white"
     >
       Skip to main content
     </a>
@@ -147,12 +165,13 @@ const allSchemas = schema
 
     <Footer />
     <MobileBar />
+    <FloatingWhatsApp />
     <EnquiryModal />
 
-    <!-- Global interactive handlers: modal triggers, smooth scrolling, video toggles -->
+    <!-- Global interactive handlers: modal triggers, smooth scrolling -->
     <script>
       // Global enquiry modal trigger
-      window.openEnquiryModal = (serviceName = '') => {
+      (window as any).openEnquiryModal = (serviceName = '') => {
         const modal = document.getElementById('enquiry-modal');
         const select = document.getElementById('modal-service') as HTMLSelectElement | null;
         if (modal) {
@@ -166,9 +185,6 @@ const allSchemas = schema
           if (firstInput) firstInput.focus();
         }
       };
-
-      // Expose to window for inline onclicks
-      (window as any).openEnquiryModal = window.openEnquiryModal;
     </script>
   </body>
 </html>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="bgGradSkin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1917" />
+      <stop offset="100%" stop-color="#0f0e0d" />
+    </linearGradient>
+    <linearGradient id="goldArtSkin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCEFD5" />
+      <stop offset="50%" stop-color="#E5B972" />
+      <stop offset="100%" stop-color="#C59341" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" rx="16" fill="url(#bgGradSkin)" stroke="#332d28" stroke-width="1.5" />
+  
+  <g transform="translate(160, 75)">
+    <!-- Dropper Bottle -->
+    <!-- Cap & Bulb -->
+    <path d="M 33 20 C 33 12, 38 7, 45 7 C 52 7, 57 12, 57 20 Z" fill="#E5B972" />
+    <rect x="30" y="20" width="30" height="12" rx="2" fill="#C59341" />
+    <!-- Neck -->
+    <rect x="35" y="32" width="20" height="8" fill="#E5B972" />
+    <!-- Glass Bottle Body -->
+    <path d="M 20 45 C 20 40, 25 40, 35 40 L 55 40 C 65 40, 70 40, 70 45 L 70 120 C 70 128, 63 135, 55 135 L 35 135 C 27 135, 20 128, 20 120 Z" 
+          stroke="url(#goldArtSkin)" stroke-width="2" fill="#292524" />
+    
+    <!-- Bottle Label -->
+    <rect x="25" y="60" width="40" height="50" rx="3" fill="#1c1917" stroke="#E5B972" stroke-width="0.8" />
+    <line x1="30" y1="75" x2="60" y2="75" stroke="#E5B972" stroke-width="1" />
+    <line x1="34" y1="83" x2="56" y2="83" stroke="#8C827A" stroke-width="0.8" />
+    <line x1="37" y1="91" x2="53" y2="91" stroke="#8C827A" stroke-width="0.8" />
+
+    <!-- Dropper Pipette Tip & Hanging Drop -->
+    <line x1="45" y1="135" x2="45" y2="150" stroke="#E5B972" stroke-width="1.5" />
+    <path d="M 45 152 C 45 152, 41 158, 41 161 C 41 164, 43 166, 45 166 C 47 166, 49 164, 49 161 C 49 158, 45 152, 45 152 Z" fill="#FCEFD5" />
+  </g>
+
+  <!-- Botanical Leaf flourish -->
+  <path d="M 260 145 C 275 135, 290 140, 295 155 C 285 165, 270 160, 260 145 Z" fill="#E5B972" opacity="0.6" />
+  <path d="M 260 145 Q 275 148 295 155" stroke="#FCEFD5" stroke-width="1" opacity="0.8" />
+
+  <!-- Caption -->
+  <text x="200" y="260" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="#E5B972">
+    PERSONALIZED SKIN CARE
+  </text>
+  <text x="200" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#8C827A">
+    Product Guidance &amp; Barrier Health
+  </text>
+</svg>
+

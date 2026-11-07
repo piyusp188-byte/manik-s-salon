@@ -118,3 +118,4 @@ All business details, text, prices, and courses are maintained in a single clean
    - **Build command:** `npm run build`
    - **Build output directory:** `dist`
 3. Connect your custom domain (e.g. `monikssalon.com`) in the dashboard. SSL / HTTPS is automatic and free.
+

@@ -15,6 +15,10 @@ pnpm-debug.log*
 .env
 .env.production
 
+# Heavy video sources & raw assets
+assets/video/source/
+/*.mp4
+
 # OS files
 .DS_Store
 Thumbs.db

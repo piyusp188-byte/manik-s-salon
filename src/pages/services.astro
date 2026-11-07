@@ -17,14 +17,14 @@ const breadcrumbs = [
   <Breadcrumb items={breadcrumbs} />
 
   <!-- Page Header -->
-  <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-stone-800/80">
-    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full">
+  <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-[#E8D9DE]" aria-labelledby="services-title">
+    <span class="px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#6B2D5E] bg-[#FBEFF1] border border-[#E8D9DE] rounded-full">
       Complete Services Menu
     </span>
-    <h1 class="text-3xl sm:text-5xl font-serif font-bold text-stone-100 mt-4">
+    <h1 id="services-title" class="text-3xl sm:text-5xl font-display font-bold text-[#2B2024] mt-4">
       Beauty Services in Mahad
     </h1>
-    <p class="text-xs sm:text-sm text-stone-300 max-w-2xl mx-auto mt-3 leading-relaxed">
+    <p class="text-sm sm:text-base text-[#5A4553] max-w-2xl mx-auto mt-3 leading-relaxed">
       Delivering personalized care with premium products, skin-tone matching, and hygienic standards. Pocket-friendly luxury right here in Navipeth, Mahad.
     </p>
 
@@ -33,7 +33,7 @@ const breadcrumbs = [
       {SERVICES.map((s) => (
         <a
           href={`#${s.id}`}
-          class="px-3 py-1.5 rounded-lg text-xs font-medium text-stone-300 bg-stone-900 border border-stone-800 hover:border-amber-400/50 hover:text-amber-200 transition-colors"
+          class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-[#2B2024] bg-white border border-[#E8D9DE] hover:border-[#6B2D5E] hover:text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors shadow-sm"
         >
           {s.name}
         </a>
@@ -50,18 +50,18 @@ const breadcrumbs = [
     </div>
 
     <!-- Pricing Policy Note -->
-    <div class="mt-16 p-6 sm:p-8 rounded-2xl bg-stone-900/40 border border-stone-800 text-stone-300 text-xs sm:text-sm max-w-3xl mx-auto">
-      <h3 class="font-serif font-bold text-base text-amber-200 mb-2">
+    <div class="mt-16 p-6 sm:p-8 rounded-3xl bg-white border border-[#E8D9DE] text-[#5A4553] text-xs sm:text-sm max-w-3xl mx-auto shadow-sm">
+      <h3 class="font-display font-bold text-xl text-[#2B2024] mb-2">
         A Note on Pricing &amp; Custom Packages
       </h3>
       <p class="leading-relaxed">
-        Prices listed as <strong class="text-amber-300 font-semibold">[Price on Consultation]</strong> will be updated once official rate cards are confirmed by the owner. For bridal packages, multiple-event mehndi, or group booking rates, please call us directly or send a message via WhatsApp.
+        Prices listed as <strong class="text-[#6B2D5E] font-semibold">[Price on Consultation]</strong> will be updated once official rate cards are confirmed by the owner. For bridal packages, multiple-event mehndi, or group booking rates, please call us directly or send a message via WhatsApp.
       </p>
       <div class="mt-4 flex flex-wrap gap-4">
-        <a href={`tel:${SITE_CONFIG.phoneTel}`} class="text-amber-300 font-semibold hover:underline">
+        <a href={`tel:${SITE_CONFIG.phoneTel}`} class="text-[#6B2D5E] font-bold hover:underline">
           &bull; Call: {SITE_CONFIG.phoneInternational}
         </a>
-        <a href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(SITE_CONFIG.whatsappDefaultMessage)}`} target="_blank" rel="noopener noreferrer" class="text-emerald-400 font-semibold hover:underline">
+        <a href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(SITE_CONFIG.whatsappDefaultMessage)}`} target="_blank" rel="noopener noreferrer" class="text-emerald-600 font-bold hover:underline">
           &bull; Chat on WhatsApp
         </a>
       </div>

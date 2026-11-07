@@ -10,41 +10,41 @@ const { course } = Astro.props;
 
 <article 
   id={course.id}
-  class="flex flex-col justify-between rounded-2xl bg-stone-900/60 border border-stone-800/80 p-6 sm:p-8 hover:border-amber-500/40 hover:bg-stone-900/90 transition-all duration-300 shadow-xl scroll-mt-24"
+  class="flex flex-col justify-between rounded-2xl bg-white border border-[#E8D9DE] p-6 sm:p-8 hover:border-[#6B2D5E]/60 transition-all duration-300 shadow-sm hover:shadow-md scroll-mt-24"
 >
   <div>
     <!-- Badges -->
     <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-full">
+      <span class="px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#6B2D5E] bg-[#FBEFF1] border border-[#E8D9DE] rounded-full">
         {course.level}
       </span>
-      <span class="text-xs text-stone-400 font-medium">
+      <span class="text-xs text-[#5A4553] font-medium">
         Hands-On Practical Training
       </span>
     </div>
 
     <!-- Title & Tagline -->
-    <h3 class="text-xl sm:text-2xl font-serif font-bold text-stone-100">
+    <h3 class="text-2xl sm:text-3xl font-display font-bold text-[#2B2024]">
       {course.title}
     </h3>
-    <p class="text-xs sm:text-sm text-amber-300/80 font-medium mt-1">
+    <p class="text-xs sm:text-sm text-[#C4845A] font-semibold mt-1">
       {course.tagline}
     </p>
 
     <!-- Description -->
-    <p class="text-xs sm:text-sm text-stone-300 mt-3 leading-relaxed">
+    <p class="text-xs sm:text-sm text-[#5A4553] mt-3 leading-relaxed">
       {course.description}
     </p>
 
     <!-- Curriculum -->
-    <div class="mt-5 pt-4 border-t border-stone-800">
-      <h4 class="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-2.5">
+    <div class="mt-5 pt-4 border-t border-[#E8D9DE]/60">
+      <h4 class="text-xs font-bold uppercase tracking-wider text-[#2B2024] mb-2.5">
         What You Will Master:
       </h4>
-      <ul class="space-y-1.5 text-xs text-stone-300">
+      <ul class="space-y-2 text-xs text-[#5A4553]">
         {course.curriculum.map((item) => (
           <li class="flex items-start gap-2">
-            <svg class="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-3.5 h-3.5 text-[#6B2D5E] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
             </svg>
             <span>{item}</span>
@@ -54,36 +54,36 @@ const { course } = Astro.props;
     </div>
 
     <!-- Audience -->
-    <div class="mt-4 p-3 rounded-lg bg-stone-950/70 border border-stone-800 text-xs text-stone-300">
-      <strong class="text-amber-200">Ideal For:</strong> {course.audience}
+    <div class="mt-4 p-3.5 rounded-xl bg-[#FFF9F5] border border-[#E8D9DE] text-xs text-[#5A4553]">
+      <strong class="text-[#2B2024]">Ideal For:</strong> {course.audience}
     </div>
 
     <!-- Duration & Batch Placeholders -->
-    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-stone-400">
-      <div class="p-2 rounded bg-stone-950/40 border border-stone-800">
-        <span class="block text-[10px] uppercase font-semibold text-stone-500">Duration</span>
-        <span class="text-stone-300 font-medium">{course.durationPlaceholder}</span>
+    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+      <div class="p-2.5 rounded-xl bg-[#FFF9F5] border border-[#E8D9DE]/70">
+        <span class="block text-[10px] uppercase font-bold text-[#7A6672]">Duration</span>
+        <span class="text-[#2B2024] font-medium">{course.durationPlaceholder}</span>
       </div>
-      <div class="p-2 rounded bg-stone-950/40 border border-stone-800">
-        <span class="block text-[10px] uppercase font-semibold text-stone-500">Schedule</span>
-        <span class="text-stone-300 font-medium">{course.batchInfoPlaceholder}</span>
+      <div class="p-2.5 rounded-xl bg-[#FFF9F5] border border-[#E8D9DE]/70">
+        <span class="block text-[10px] uppercase font-bold text-[#7A6672]">Schedule</span>
+        <span class="text-[#2B2024] font-medium">{course.batchInfoPlaceholder}</span>
       </div>
     </div>
   </div>
 
   <!-- Bottom CTA & Fee Placeholder -->
-  <div class="mt-6 pt-5 border-t border-stone-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+  <div class="mt-6 pt-5 border-t border-[#E8D9DE]/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
     <div>
-      <span class="block text-[10px] uppercase tracking-wider text-stone-500 font-semibold">Course Fee</span>
-      <span class="text-xs sm:text-sm font-semibold text-amber-300">{course.feePlaceholder}</span>
+      <span class="block text-[10px] uppercase tracking-wider text-[#7A6672] font-semibold">Course Fee</span>
+      <span class="text-xs sm:text-sm font-bold text-[#6B2D5E]">{course.feePlaceholder}</span>
     </div>
 
     <button
       type="button"
       onclick={`window.openEnquiryModal('Academy Course: ${course.title}')`}
-      class="w-full sm:w-auto px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-stone-950 bg-gradient-to-r from-amber-300 to-amber-500 hover:from-amber-200 hover:to-amber-400 rounded-lg shadow-md transition-all cursor-pointer"
+      class="w-full sm:w-auto px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#6B2D5E] hover:bg-[#4E1E45] rounded-xl shadow-sm transition-all cursor-pointer"
     >
-      Enquire for Batch Admission
+      Enquire for Admission
     </button>
   </div>
 </article>

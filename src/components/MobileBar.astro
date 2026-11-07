@@ -3,17 +3,17 @@ import { SITE_CONFIG } from '../data/siteData';
 ---
 
 <nav 
-  class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-stone-950/95 border-t border-stone-800 backdrop-blur-lg px-3 py-2 shadow-2xl"
+  class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/95 border-t border-[#E8D9DE] backdrop-blur-lg px-3 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] shadow-2xl"
   aria-label="Quick Mobile Actions"
 >
-  <div class="grid grid-cols-3 gap-2 max-w-md mx-auto items-center">
+  <div class="grid grid-cols-3 gap-2.5 max-w-md mx-auto items-center">
     <!-- Call Button -->
     <a
       href={`tel:${SITE_CONFIG.phoneTel}`}
-      class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-stone-900 border border-stone-800 text-stone-200 active:bg-stone-800 transition-colors"
-      aria-label="Call Monik's Salon & Academy now at +91 84460 03385"
+      class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#FFF9F5] border border-[#E8D9DE] text-[#2B2024] active:bg-[#FBEFF1] transition-colors"
+      aria-label="Call Monik's Salon & Academy at +91 84460 03385"
     >
-      <svg class="w-5 h-5 text-amber-400 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-5 h-5 text-[#6B2D5E] mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
       </svg>
       <span class="text-[11px] font-semibold tracking-wide">Call Now</span>
@@ -24,10 +24,10 @@ import { SITE_CONFIG } from '../data/siteData';
       href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(SITE_CONFIG.whatsappDefaultMessage)}`}
       target="_blank"
       rel="noopener noreferrer"
-      class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-emerald-950/60 border border-emerald-700/50 text-emerald-300 active:bg-emerald-900/60 transition-colors"
+      class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#25D366] text-white active:bg-[#20ba59] transition-colors shadow-sm"
       aria-label="Chat with Monik's Salon & Academy on WhatsApp"
     >
-      <svg class="w-5 h-5 text-emerald-400 mb-0.5 fill-current" viewBox="0 0 24 24">
+      <svg class="w-5 h-5 text-white mb-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.076-1.924-.442-1.428-.601-2.346-2.072-2.417-2.169-.072-.096-.576-.767-.576-1.464 0-.697.362-1.039.49-1.182.128-.143.281-.179.375-.179.094 0 .188.001.27.006.086.004.202-.033.315.24.116.282.399.972.433 1.043.035.071.058.155.011.25-.046.096-.07.155-.139.238-.07.083-.146.185-.209.248-.07.071-.143.148-.061.288.083.14.367.606.788.981.542.482.999.631 1.139.701.141.07.224.06.308-.036.084-.096.36-419.456-.563.096-.144.192-.12.324-.072.132.048.837.395.981.467.144.072.24.108.276.168.036.06.036.35-.108.755z" />
       </svg>
       <span class="text-[11px] font-semibold tracking-wide">WhatsApp</span>
@@ -37,10 +37,10 @@ import { SITE_CONFIG } from '../data/siteData';
     <button
       type="button"
       onclick="window.openEnquiryModal()"
-      class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-stone-950 font-bold active:opacity-90 shadow-md shadow-amber-500/20 cursor-pointer"
+      class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#6B2D5E] text-white font-bold active:bg-[#4E1E45] shadow-md cursor-pointer transition-colors"
       aria-label="Open appointment booking form"
     >
-      <svg class="w-5 h-5 text-stone-950 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-5 h-5 text-white mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
       </svg>
       <span class="text-[11px] font-bold tracking-wide">Book Now</span>

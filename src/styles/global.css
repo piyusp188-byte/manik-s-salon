@@ -2,25 +2,43 @@
 
 @layer base {
   :root {
-    --color-bg-dark: #0c0a09;
-    --color-surface-dark: #171513;
-    --color-surface-card: #1f1c19;
-    --color-surface-border: #332d28;
-    --color-gold-primary: #d4af37;
-    --color-gold-hover: #e6c35c;
-    --color-rose-gold: #c98a68;
-    --color-rose-gold-light: #e5b399;
-    --color-champagne: #f4ece1;
-    --color-text-main: #fcfaf8;
-    --color-text-muted: #b8aea5;
-    --color-text-subtle: #7d736a;
+    --clr-plum: #6B2D5E;
+    --clr-plum-dark: #4E1E45;
+    --clr-plum-light: #8E3E7D;
+    --clr-blush-bg: #FBEFF1;
+    --clr-ivory-bg: #FFF9F5;
+    --clr-rose-gold: #C4845A;
+    --clr-rose-gold-light: #E0A683;
+    --clr-text: #2B2024;
+    --clr-text-muted: #5A4553;
+    --clr-white: #FFFFFF;
+    --clr-star: #E8A020;
+    --clr-border: #E8D9DE;
+    --clr-card-bg: #FFFFFF;
+
+    /* Legacy mapping for components */
+    --color-bg-dark: #2B2024;
+    --color-surface-dark: #382A30;
+    --color-surface-card: #FFFFFF;
+    --color-surface-border: #E8D9DE;
+    --color-gold-primary: #6B2D5E;
+    --color-gold-hover: #4E1E45;
+    --color-rose-gold: #C4845A;
+    --color-champagne: #FBEFF1;
+    --color-text-main: #2B2024;
+    --color-text-muted: #5A4553;
+    --color-text-subtle: #7A6672;
   }
 
   html {
     scroll-behavior: smooth;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    color: var(--color-text-main);
-    background-color: var(--color-bg-dark);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--clr-text);
+    background-color: var(--clr-ivory-bg);
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -35,3 +53,17 @@
     }
   }
 }
+
+/* Custom utility classes */
+.bg-plum { background-color: var(--clr-plum); }
+.bg-plum-dark { background-color: var(--clr-plum-dark); }
+.bg-blush { background-color: var(--clr-blush-bg); }
+.bg-ivory { background-color: var(--clr-ivory-bg); }
+.text-plum { color: var(--clr-plum); }
+.text-plum-dark { color: var(--clr-plum-dark); }
+.text-charcoal { color: var(--clr-text); }
+.text-muted-plum { color: var(--clr-text-muted); }
+.text-rose-gold { color: var(--clr-rose-gold); }
+.border-plum { border-color: var(--clr-plum); }
+.border-rose-gold { border-color: var(--clr-rose-gold); }
+.border-blush { border-color: var(--clr-border); }

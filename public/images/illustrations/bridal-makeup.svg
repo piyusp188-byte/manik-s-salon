@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1917" />
+      <stop offset="100%" stop-color="#0f0e0d" />
+    </linearGradient>
+    <linearGradient id="goldArt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCEFD5" />
+      <stop offset="50%" stop-color="#E5B972" />
+      <stop offset="100%" stop-color="#C59341" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" rx="16" fill="url(#bgGrad)" stroke="#332d28" stroke-width="1.5" />
+  <circle cx="200" cy="150" r="90" stroke="url(#goldArt)" stroke-width="1" stroke-dasharray="4 4" opacity="0.4" />
+  <circle cx="200" cy="150" r="75" stroke="url(#goldArt)" stroke-width="1.5" opacity="0.6" />
+  
+  <!-- Makeup Brush Silhouette -->
+  <g transform="translate(140, 70) rotate(25 60 80)">
+    <!-- Brush Handle -->
+    <path d="M 60 70 L 60 170 C 60 175, 56 180, 50 180 C 44 180, 40 175, 40 170 L 40 70 Z" fill="url(#goldArt)" />
+    <!-- Ferrule -->
+    <rect x="38" y="55" width="24" height="20" rx="2" fill="#E5B972" />
+    <!-- Bristles -->
+    <path d="M 38 55 C 36 30, 44 15, 50 15 C 56 15, 64 30, 62 55 Z" fill="#FCEFD5" opacity="0.9" />
+  </g>
+
+  <!-- Sparkles -->
+  <path d="M 270 95 L 273 105 L 283 108 L 273 111 L 270 121 L 267 111 L 257 108 L 267 105 Z" fill="url(#goldArt)" />
+  <path d="M 125 180 L 127 186 L 133 188 L 127 190 L 125 196 L 123 190 L 117 188 L 123 186 Z" fill="url(#goldArt)" opacity="0.8" />
+  <circle cx="280" cy="170" r="3" fill="url(#goldArt)" opacity="0.7" />
+
+  <!-- Caption -->
+  <text x="200" y="260" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="#E5B972">
+    BRIDAL &amp; CELEBRATION MAKEUP
+  </text>
+  <text x="200" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#8C827A">
+    Skin-Tone Matched Precision
+  </text>
+</svg>
+
