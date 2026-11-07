@@ -34,3 +34,4 @@ const webmSize = Math.round(fs.statSync(path.join(pubVideo, 'hero-mobile.webm'))
 console.log(`✓ hero-mobile.mp4 size: ${mp4Size} KB`);
 console.log(`✓ hero-mobile.webm size: ${webmSize} KB`);
 console.log('Done!');
+
