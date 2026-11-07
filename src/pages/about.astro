@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { SITE_CONFIG, WHY_CHOOSE_US } from '../data/siteData';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'About', url: '/about/' }
+];
+---
+
+<BaseLayout
+  title={`About Monik's Salon & Academy | Women-Owned Salon in Mahad`}
+  description="Discover the story behind Monik's Salon & Academy in Mahad. Women-owned, 4.7★ Google rated, committed to skin-tone-matched makeup, holistic beauty care, and friendly academy mentorship."
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- About Hero -->
+  <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-stone-800/80">
+    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full">
+      Our Story &amp; Values
+    </span>
+    <h1 class="text-3xl sm:text-5xl font-serif font-bold text-stone-100 mt-4">
+      About Monik's Salon &amp; Academy
+    </h1>
+    <p class="text-xs sm:text-sm text-stone-300 max-w-2xl mx-auto mt-3 leading-relaxed">
+      A women-owned beauty parlour and training sanctuary located on M.G Road, Bazar Peth in Mahad, Maharashtra.
+    </p>
+  </section>
+
+  <!-- Narrative Section -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="space-y-8 text-stone-300 text-xs sm:text-sm leading-relaxed">
+      <!-- Section 1 -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-stone-900/60 border border-stone-800">
+        <h2 class="text-xl sm:text-2xl font-serif font-bold text-stone-100 mb-3">
+          Our Philosophy: Beauty Rooted in Confidence
+        </h2>
+        <p>
+          At <strong>{SITE_CONFIG.businessName}</strong>, we believe that true beauty care is never about masking who you are — it is about enhancing your individuality and boosting your inner confidence. From our signature skin-tone-matched makeup applications to relaxing hydra facials and traditional henna designs, every treatment is tailored to the person sitting in our chair.
+        </p>
+      </div>
+
+      <!-- Section 2: Women-Owned & Safe Space -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-stone-900/60 border border-stone-800">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-stone-100">
+            A Proudly Women-Owned Sanctuary
+          </h2>
+        </div>
+        <p>
+          We take immense pride in being an officially identified women-owned and women-operated establishment. We have created a warm, hygienic, and judgment-free space where women of all ages can unwind, feel pampered, and receive authentic beauty guidance.
+        </p>
+      </div>
+
+      <!-- Section 3: The Academy Vision -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-stone-900/60 border border-stone-800">
+        <h2 class="text-xl sm:text-2xl font-serif font-bold text-stone-100 mb-3">
+          Education: Taught Like a Friend, Not a Teacher
+        </h2>
+        <p>
+          Our Academy was created to bridge the gap between expensive, rigid beauty training and accessible, warm mentorship. As praised by our students in over 218 Google reviews, Monika ma'am and the team explain every product ingredient and application step patiently. Whether you want to master basic makeup for your everyday routine or launch your own beauty career, you are welcomed here as family.
+        </p>
+      </div>
+
+      <!-- Placeholder Notice for Owner's Personal Bio -->
+      <div class="p-6 rounded-2xl bg-stone-950/80 border border-dashed border-amber-500/30 text-xs">
+        <h3 class="font-serif font-bold text-amber-300 text-sm mb-1.5 flex items-center gap-2">
+          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Owner Information Placeholder
+        </h3>
+        <p class="text-stone-400 leading-relaxed">
+          <strong class="text-stone-200">Open Information to be supplied:</strong> Exact founding year, Monika ma'am's formal certifications or background story, and staff bios will be added here once confirmed by the owner. To maintain complete integrity, no biographical claims or staff names are invented.
+        </p>
+      </div>
+    </div>
+
+    <!-- Core Values Grid -->
+    <div class="mt-16 pt-12 border-t border-stone-800">
+      <h2 class="text-xl sm:text-3xl font-serif font-bold text-stone-100 text-center mb-8">
+        The Values We Live By
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {WHY_CHOOSE_US.map((item) => (
+          <div class="p-5 rounded-xl bg-stone-900/40 border border-stone-800">
+            <h3 class="text-sm font-serif font-bold text-amber-200 mb-1">{item.title}</h3>
+            <p class="text-xs text-stone-400">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

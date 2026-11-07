@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { SITE_CONFIG, SERVICES } from '../data/siteData';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Services', url: '/services/' }
+];
+---
+
+<BaseLayout
+  title={`Beauty Services in Mahad | Makeup, Mehndi, Hydra Facial & More | ${SITE_CONFIG.businessName}`}
+  description="Explore professional beauty parlour services in Mahad at Monik's Salon & Academy: skin-tone-matched bridal makeup, self-makeup guidance, mehndi designs, hydra facials, and hair care. Book today."
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- Page Header -->
+  <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-stone-800/80">
+    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full">
+      Complete Services Menu
+    </span>
+    <h1 class="text-3xl sm:text-5xl font-serif font-bold text-stone-100 mt-4">
+      Beauty Services in Mahad
+    </h1>
+    <p class="text-xs sm:text-sm text-stone-300 max-w-2xl mx-auto mt-3 leading-relaxed">
+      Delivering personalized care with premium products, skin-tone matching, and hygienic standards. Pocket-friendly luxury right here in Navipeth, Mahad.
+    </p>
+
+    <!-- Quick Category Jump Navigation -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
+      {SERVICES.map((s) => (
+        <a
+          href={`#${s.id}`}
+          class="px-3 py-1.5 rounded-lg text-xs font-medium text-stone-300 bg-stone-900 border border-stone-800 hover:border-amber-400/50 hover:text-amber-200 transition-colors"
+        >
+          {s.name}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      {SERVICES.map((service) => (
+        <ServiceCard service={service} />
+      ))}
+    </div>
+
+    <!-- Pricing Policy Note -->
+    <div class="mt-16 p-6 sm:p-8 rounded-2xl bg-stone-900/40 border border-stone-800 text-stone-300 text-xs sm:text-sm max-w-3xl mx-auto">
+      <h3 class="font-serif font-bold text-base text-amber-200 mb-2">
+        A Note on Pricing &amp; Custom Packages
+      </h3>
+      <p class="leading-relaxed">
+        Prices listed as <strong class="text-amber-300 font-semibold">[Price on Consultation]</strong> will be updated once official rate cards are confirmed by the owner. For bridal packages, multiple-event mehndi, or group booking rates, please call us directly or send a message via WhatsApp.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-4">
+        <a href={`tel:${SITE_CONFIG.phoneTel}`} class="text-amber-300 font-semibold hover:underline">
+          &bull; Call: {SITE_CONFIG.phoneInternational}
+        </a>
+        <a href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(SITE_CONFIG.whatsappDefaultMessage)}`} target="_blank" rel="noopener noreferrer" class="text-emerald-400 font-semibold hover:underline">
+          &bull; Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

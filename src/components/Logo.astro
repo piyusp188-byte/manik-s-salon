@@ -1,0 +1,90 @@
+---
+interface Props {
+  variant?: 'full' | 'monogram' | 'compact';
+  class?: string;
+}
+
+const { variant = 'full', class: className = '' } = Astro.props;
+---
+
+{variant === 'monogram' && (
+  <svg class={className} viewBox="0 0 100 100" fill="none" role="img" aria-label="Monik's Salon & Academy Monogram">
+    <defs>
+      <linearGradient id="monoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FCEFD5" />
+        <stop offset="40%" stop-color="#E5B972" />
+        <stop offset="100%" stop-color="#C59341" />
+      </linearGradient>
+    </defs>
+    <circle cx="50" cy="50" r="45" stroke="url(#monoGold)" stroke-width="1.5" stroke-dasharray="3 2" />
+    <circle cx="50" cy="50" r="40" stroke="url(#monoGold)" stroke-width="1.8" />
+    <circle cx="50" cy="7" r="2" fill="url(#monoGold)" />
+    <circle cx="50" cy="93" r="2" fill="url(#monoGold)" />
+    <circle cx="7" cy="50" r="2" fill="url(#monoGold)" />
+    <circle cx="93" cy="50" r="2" fill="url(#monoGold)" />
+    <path d="M 28 68 L 28 32 C 28 32, 33 46, 50 63 C 67 46, 72 32, 72 32 L 72 68 M 41 48 L 50 58 L 59 48" 
+          stroke="url(#monoGold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 42 27 L 50 21 L 58 27 L 55 30 L 45 30 Z" fill="url(#monoGold)" opacity="0.9" />
+    <circle cx="50" cy="18" r="1.5" fill="url(#monoGold)" />
+  </svg>
+)}
+
+{variant === 'compact' && (
+  <div class={`flex items-center gap-2.5 ${className}`}>
+    <div class="w-9 h-9 shrink-0">
+      <svg viewBox="0 0 100 100" fill="none" class="w-full h-full">
+        <defs>
+          <linearGradient id="compGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FCEFD5" />
+            <stop offset="40%" stop-color="#E5B972" />
+            <stop offset="100%" stop-color="#C59341" />
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="45" stroke="url(#compGold)" stroke-width="1.8" />
+        <path d="M 28 68 L 28 32 C 28 32, 33 46, 50 63 C 67 46, 72 32, 72 32 L 72 68 M 41 48 L 50 58 L 59 48" 
+              stroke="url(#compGold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+    <div class="leading-tight">
+      <span class="block text-base tracking-[0.18em] font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-amber-300 to-amber-500">
+        MONIK'S
+      </span>
+      <span class="block text-[10px] tracking-[0.24em] font-medium text-stone-300">
+        SALON &amp; ACADEMY
+      </span>
+    </div>
+  </div>
+)}
+
+{variant === 'full' && (
+  <div class={`flex items-center gap-3 ${className}`}>
+    <div class="w-11 h-11 shrink-0">
+      <svg viewBox="0 0 100 100" fill="none" class="w-full h-full">
+        <defs>
+          <linearGradient id="fullGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FCEFD5" />
+            <stop offset="40%" stop-color="#E5B972" />
+            <stop offset="100%" stop-color="#C59341" />
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="46" stroke="url(#fullGold)" stroke-width="1.5" stroke-dasharray="3 2" />
+        <circle cx="50" cy="50" r="41" stroke="url(#fullGold)" stroke-width="1.8" />
+        <path d="M 28 68 L 28 32 C 28 32, 33 46, 50 63 C 67 46, 72 32, 72 32 L 72 68 M 41 48 L 50 58 L 59 48" 
+              stroke="url(#fullGold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M 42 27 L 50 21 L 58 27 L 55 30 L 45 30 Z" fill="url(#fullGold)" opacity="0.9" />
+        <circle cx="50" cy="18" r="1.5" fill="url(#fullGold)" />
+      </svg>
+    </div>
+    <div class="flex flex-col">
+      <span class="text-lg md:text-xl tracking-[0.18em] font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-amber-200 to-amber-400">
+        MONIK'S
+      </span>
+      <span class="text-[10px] md:text-[11px] tracking-[0.25em] font-semibold text-stone-300 uppercase">
+        Salon &amp; Academy
+      </span>
+      <span class="text-[9px] tracking-wider text-amber-300/80 uppercase font-light">
+        Mahad &bull; Women-Owned
+      </span>
+    </div>
+  </div>
+)}

@@ -1,0 +1,19 @@
+{
+  "name": "moniks-salon",
+  "version": "1.0.0",
+  "description": "Website for Monik's Salon & Academy, Mahad",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.7",
+    "tailwindcss": "^4.3.5"
+  }
+}

@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import CourseCard from '../components/CourseCard.astro';
+import { SITE_CONFIG, COURSES, TESTIMONIALS } from '../data/siteData';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Academy', url: '/academy/' }
+];
+
+// Course Schema for each course
+const courseSchemas = COURSES.map((course) => ({
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": course.title,
+  "description": course.description,
+  "provider": {
+    "@type": "Organization",
+    "name": SITE_CONFIG.businessName,
+    "sameAs": "https://monikssalon.com/"
+  },
+  "courseMode": "onsite",
+  "educationalLevel": course.level,
+  "inLanguage": "en",
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "onsite",
+    "location": {
+      "@type": "Place",
+      "name": SITE_CONFIG.businessName,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": SITE_CONFIG.address.street,
+        "addressLocality": SITE_CONFIG.address.city,
+        "addressRegion": SITE_CONFIG.address.state,
+        "postalCode": SITE_CONFIG.address.postalCode,
+        "addressCountry": SITE_CONFIG.address.countryCode
+      }
+    }
+  }
+}));
+---
+
+<BaseLayout
+  title={`Beauty Academy in Mahad | Makeup, Mehndi & Skincare Courses | ${SITE_CONFIG.businessName}`}
+  description="Learn professional makeup, self-makeup masterclasses, and basic mehndi classes in Mahad at Monik's Academy. Beginner-friendly, hands-on training with supportive mentorship."
+  schema={courseSchemas}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- Academy Page Hero -->
+  <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-stone-800/80">
+    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full">
+      Hands-on Beauty Training
+    </span>
+    <h1 class="text-3xl sm:text-5xl font-serif font-bold text-stone-100 mt-4">
+      Learn Beauty at Monik's Academy, Mahad
+    </h1>
+    <p class="text-xs sm:text-sm text-stone-300 max-w-2xl mx-auto mt-3 leading-relaxed">
+      Empowering women with real, practical skills in makeup artistry, henna design, and skincare. Beginner-friendly training taught with patience, clarity, and genuine encouragement.
+    </p>
+
+    <!-- Key Academy Pillars -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mt-8 text-left text-xs">
+      <div class="p-3.5 rounded-xl bg-stone-900/60 border border-stone-800">
+        <span class="text-amber-300 font-semibold block mb-0.5">Taught Like a Friend</span>
+        <span class="text-stone-400">Zero intimidation; comfortable learning environment</span>
+      </div>
+      <div class="p-3.5 rounded-xl bg-stone-900/60 border border-stone-800">
+        <span class="text-amber-300 font-semibold block mb-0.5">Hands-On Practice</span>
+        <span class="text-stone-400">Step-by-step guidance on live models &amp; tools</span>
+      </div>
+      <div class="p-3.5 rounded-xl bg-stone-900/60 border border-stone-800">
+        <span class="text-amber-300 font-semibold block mb-0.5">Pocket-Friendly Fees</span>
+        <span class="text-stone-400">High-value education accessible to everyone</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Grid -->
+  <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {COURSES.map((course) => (
+        <CourseCard course={course} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Student Reviews on Academy -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-stone-800/80">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full">
+        Real Student Voices
+      </span>
+      <h2 class="text-2xl sm:text-3xl font-serif font-bold text-stone-100 mt-3">
+        What Our Academy Students Say
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {TESTIMONIALS.map((t) => (
+        <div class="p-6 rounded-2xl bg-stone-900/40 border border-stone-800 flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 mb-2">
+              {Array.from({ length: 5 }).map(() => (
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <p class="text-xs sm:text-sm text-stone-300 italic mb-3">
+              &ldquo;{t.text}&rdquo;
+            </p>
+          </div>
+          <div class="pt-3 border-t border-stone-800 text-xs">
+            <span class="block font-semibold text-stone-100">{t.author}</span>
+            <span class="block text-[11px] text-amber-300">{t.serviceMentioned}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Enrolment CTA -->
+    <div class="mt-12 text-center p-8 rounded-2xl bg-stone-900/60 border border-amber-500/30 max-w-2xl mx-auto">
+      <h3 class="text-xl font-serif font-bold text-stone-100">
+        Ready to Join the Next Academy Batch?
+      </h3>
+      <p class="text-xs sm:text-sm text-stone-300 mt-2">
+        Contact us to know current batch dates, fee structure, and syllabus details.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <button
+          type="button"
+          onclick="window.openEnquiryModal('General Academy Course Admission')"
+          class="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-stone-950 bg-gradient-to-r from-amber-300 to-amber-500 hover:from-amber-200 hover:to-amber-400 cursor-pointer"
+        >
+          Enquire via WhatsApp
+        </button>
+        <a
+          href={`tel:${SITE_CONFIG.phoneTel}`}
+          class="px-6 py-2.5 rounded-xl font-semibold text-xs text-stone-200 bg-stone-900 border border-stone-700 hover:border-amber-400"
+        >
+          Call +91 84460 03385
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

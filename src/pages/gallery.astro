@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { SITE_CONFIG, REQUIRED_PHOTOS_LIST } from '../data/siteData';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Gallery', url: '/gallery/' }
+];
+
+const galleryItems = [
+  { id: 1, title: 'Skin-Tone-Matched Bridal Makeup', category: 'makeup', label: 'Bridal Artistry', tag: 'Real Photo Needed' },
+  { id: 2, title: 'Engagement Glam & Eye Makeup', category: 'makeup', label: 'Party Makeup', tag: 'Real Photo Needed' },
+  { id: 3, title: 'Traditional Bridal Full-Hand Mehndi', category: 'mehndi', label: 'Mehndi Design', tag: 'Real Photo Needed' },
+  { id: 4, title: 'Contemporary Arabic Floral Henna', category: 'mehndi', label: 'Mehndi Design', tag: 'Real Photo Needed' },
+  { id: 5, title: 'Hydra Facial Rejuvenation & Deep Pore Cleanse', category: 'skincare', label: 'Hydra Facial', tag: 'Real Photo Needed' },
+  { id: 6, title: 'Skin Barrier & Hydration Therapy Suite', category: 'skincare', label: 'Skin Care', tag: 'Real Photo Needed' },
+  { id: 7, title: 'Intensive Hair Spa & Deep Conditioning', category: 'haircare', label: 'Hair Care', tag: 'Real Photo Needed' },
+  { id: 8, title: 'Deluxe Foot Care & Pedicure Station', category: 'pedicure', label: 'Pedicure', tag: 'Real Photo Needed' },
+  { id: 9, title: 'Hands-on Makeup Academy Practice Session', category: 'academy', label: 'Academy Class', tag: 'Real Photo Needed' },
+  { id: 10, title: 'Mehndi Cone Control & Student Practice', category: 'academy', label: 'Academy Class', tag: 'Real Photo Needed' },
+  { id: 11, title: 'Salon Ambience & Reception Area', category: 'salon', label: 'Interior', tag: 'Real Photo Needed' },
+  { id: 12, title: 'Client Consultation & Shade Matching', category: 'salon', label: 'Consultation', tag: 'Real Photo Needed' },
+];
+---
+
+<BaseLayout
+  title={`Work Gallery | Bridal Makeup & Mehndi Photos | ${SITE_CONFIG.businessName}`}
+  description="Explore the artistry gallery of Monik's Salon & Academy in Mahad. Real photos of bridal makeup, mehndi designs, hydra facials, and beauty academy student sessions."
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- Page Header -->
+  <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-stone-800/80">
+    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full">
+      Visual Portfolio
+    </span>
+    <h1 class="text-3xl sm:text-5xl font-serif font-bold text-stone-100 mt-4">
+      Our Artistry &amp; Academy Work
+    </h1>
+    <p class="text-xs sm:text-sm text-stone-300 max-w-2xl mx-auto mt-3 leading-relaxed">
+      A transparent visual record of our salon work and academy sessions. We strictly do not use stock photos of fake models; real photography from our salon will appear here.
+    </p>
+
+    <!-- Filter Buttons (JavaScript filtered) -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mt-8" id="gallery-filter-buttons">
+      <button type="button" data-filter="all" class="filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-amber-400 text-stone-950 transition-colors">
+        All Work
+      </button>
+      <button type="button" data-filter="makeup" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-stone-300 bg-stone-900 border border-stone-800 hover:text-amber-200 transition-colors">
+        Makeup
+      </button>
+      <button type="button" data-filter="mehndi" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-stone-300 bg-stone-900 border border-stone-800 hover:text-amber-200 transition-colors">
+        Mehndi
+      </button>
+      <button type="button" data-filter="skincare" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-stone-300 bg-stone-900 border border-stone-800 hover:text-amber-200 transition-colors">
+        Facial &amp; Skin Care
+      </button>
+      <button type="button" data-filter="academy" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-stone-300 bg-stone-900 border border-stone-800 hover:text-amber-200 transition-colors">
+        Academy Classes
+      </button>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+      {galleryItems.map((item) => (
+        <div 
+          class="gallery-item group relative rounded-2xl overflow-hidden bg-stone-900/60 border border-stone-800/80 p-5 flex flex-col justify-between hover:border-amber-400/50 transition-all duration-300"
+          data-category={item.category}
+        >
+          <!-- Placeholder Graphic -->
+          <div class="aspect-[4/3] rounded-xl bg-gradient-to-br from-stone-900 to-stone-950 border border-dashed border-stone-700/80 flex flex-col items-center justify-center p-4 text-center group-hover:border-amber-500/40 transition-colors">
+            <div class="w-12 h-12 rounded-full bg-stone-800/80 border border-stone-700 flex items-center justify-center text-amber-400 mb-3 group-hover:scale-105 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <span class="text-xs font-serif font-semibold text-stone-200">
+              {item.title}
+            </span>
+            <span class="inline-block mt-1 px-2 py-0.5 text-[10px] font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded">
+              [{item.tag}]
+            </span>
+          </div>
+
+          <!-- Bottom Metadata -->
+          <div class="mt-4 flex items-center justify-between text-xs">
+            <span class="text-stone-400 font-medium">{item.label}</span>
+            <button
+              type="button"
+              onclick={`window.openEnquiryModal('Gallery Interest: ${item.title}')`}
+              class="text-amber-300 font-semibold hover:underline"
+            >
+              Enquire &rarr;
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Owner Photo Submission Guide -->
+    <div class="mt-16 p-6 sm:p-8 rounded-2xl bg-stone-900/40 border border-stone-800 max-w-3xl mx-auto">
+      <h3 class="text-base font-serif font-bold text-amber-200 mb-2">
+        Photo Supply Checklist for Owner
+      </h3>
+      <p class="text-xs text-stone-400 mb-4">
+        To complete the gallery with your genuine work, please supply high-resolution photos for each category below:
+      </p>
+      <ul class="space-y-2 text-xs text-stone-300">
+        {REQUIRED_PHOTOS_LIST.map((req) => (
+          <li class="flex items-start gap-2">
+            <span class="text-amber-400 font-bold">&bull;</span>
+            <div>
+              <strong class="text-stone-200">{req.category}:</strong> {req.description}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.gallery-item');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+
+      // Update active button classes
+      buttons.forEach((b) => {
+        b.classList.remove('bg-amber-400', 'text-stone-950', 'active');
+        b.classList.add('text-stone-300', 'bg-stone-900', 'border', 'border-stone-800');
+      });
+      btn.classList.add('bg-amber-400', 'text-stone-950', 'active');
+      btn.classList.remove('text-stone-300', 'bg-stone-900', 'border');
+
+      // Filter gallery cards
+      items.forEach((item) => {
+        const itemCategory = item.getAttribute('data-category');
+        if (filter === 'all' || itemCategory === filter) {
+          (item as HTMLElement).style.display = 'flex';
+        } else {
+          (item as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

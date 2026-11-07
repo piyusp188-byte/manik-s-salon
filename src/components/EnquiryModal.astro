@@ -1,0 +1,214 @@
+---
+import { SITE_CONFIG, SERVICES, COURSES } from '../data/siteData';
+---
+
+<div
+  id="enquiry-modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-stone-950/80 backdrop-blur-md transition-opacity duration-300"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+>
+  <div class="relative w-full max-w-lg bg-stone-900 border border-stone-700/80 rounded-2xl shadow-2xl p-6 sm:p-8 overflow-y-auto max-h-[90vh]">
+    <!-- Close button -->
+    <button
+      id="modal-close-btn"
+      type="button"
+      class="absolute top-4 right-4 p-2 text-stone-400 hover:text-white rounded-lg hover:bg-stone-800 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400"
+      aria-label="Close booking modal"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="mb-5">
+      <span class="inline-block px-2.5 py-1 text-[11px] font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-full mb-2">
+        Direct Booking &amp; Course Enquiry
+      </span>
+      <h3 id="modal-title" class="text-xl sm:text-2xl font-serif font-bold text-stone-100">
+        Book an Appointment or Course
+      </h3>
+      <p class="text-xs sm:text-sm text-stone-400 mt-1">
+        Send your booking request directly to our team via WhatsApp. We will confirm your slot promptly.
+      </p>
+    </div>
+
+    <form id="booking-form" class="space-y-4">
+      <div>
+        <label for="modal-name" class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">
+          Full Name <span class="text-amber-400">*</span>
+        </label>
+        <input
+          type="text"
+          id="modal-name"
+          name="name"
+          required
+          placeholder="e.g. Priya Sharma"
+          class="w-full px-3.5 py-2.5 rounded-lg bg-stone-950 border border-stone-700 text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 placeholder:text-stone-600"
+        />
+      </div>
+
+      <div>
+        <label for="modal-phone" class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">
+          Phone Number <span class="text-amber-400">*</span>
+        </label>
+        <input
+          type="tel"
+          id="modal-phone"
+          name="phone"
+          required
+          placeholder="e.g. 9876543210"
+          class="w-full px-3.5 py-2.5 rounded-lg bg-stone-950 border border-stone-700 text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 placeholder:text-stone-600"
+        />
+      </div>
+
+      <div>
+        <label for="modal-service" class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">
+          Select Service or Academy Course <span class="text-amber-400">*</span>
+        </label>
+        <select
+          id="modal-service"
+          name="service"
+          required
+          class="w-full px-3.5 py-2.5 rounded-lg bg-stone-950 border border-stone-700 text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400"
+        >
+          <option value="" disabled selected>-- Choose Service or Course --</option>
+          <optgroup label="Salon Services">
+            {SERVICES.map((s) => (
+              <option value={`Service: ${s.name}`}>{s.name}</option>
+            ))}
+          </optgroup>
+          <optgroup label="Academy Courses">
+            {COURSES.map((c) => (
+              <option value={`Academy Course: ${c.title}`}>{c.title}</option>
+            ))}
+          </optgroup>
+          <option value="General Beauty Consultation">General Consultation / Other</option>
+        </select>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label for="modal-date" class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">
+            Preferred Date
+          </label>
+          <input
+            type="date"
+            id="modal-date"
+            name="date"
+            class="w-full px-3.5 py-2.5 rounded-lg bg-stone-950 border border-stone-700 text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400"
+          />
+        </div>
+
+        <div>
+          <label for="modal-time" class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">
+            Preferred Time Slot
+          </label>
+          <select
+            id="modal-time"
+            name="time"
+            class="w-full px-3.5 py-2.5 rounded-lg bg-stone-950 border border-stone-700 text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400"
+          >
+            <option value="Anytime (10 AM - 8 PM)">Anytime (10 AM – 8 PM)</option>
+            <option value="Morning (10:00 AM - 1:00 PM)">Morning (10:00 AM – 1:00 PM)</option>
+            <option value="Afternoon (1:00 PM - 4:00 PM)">Afternoon (1:00 PM – 4:00 PM)</option>
+            <option value="Evening (4:00 PM - 8:00 PM)">Evening (4:00 PM – 8:00 PM)</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="modal-notes" class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">
+          Special Notes / Questions (Optional)
+        </label>
+        <textarea
+          id="modal-notes"
+          name="notes"
+          rows="2"
+          placeholder="e.g. Skin concerns, bridal date, or course batch inquiry..."
+          class="w-full px-3.5 py-2.5 rounded-lg bg-stone-950 border border-stone-700 text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 placeholder:text-stone-600 resize-none"
+        ></textarea>
+      </div>
+
+      <div class="pt-2 space-y-2.5">
+        <button
+          type="submit"
+          class="w-full py-3 px-4 rounded-xl text-stone-950 font-bold bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 hover:from-emerald-300 hover:to-teal-200 transition-all shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2 text-sm cursor-pointer"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.076-1.924-.442-1.428-.601-2.346-2.072-2.417-2.169-.072-.096-.576-.767-.576-1.464 0-.697.362-1.039.49-1.182.128-.143.281-.179.375-.179.094 0 .188.001.27.006.086.004.202-.033.315.24.116.282.399.972.433 1.043.035.071.058.155.011.25-.046.096-.07.155-.139.238-.07.083-.146.185-.209.248-.07.071-.143.148-.061.288.083.14.367.606.788.981.542.482.999.631 1.139.701.141.07.224.06.308-.036.084-.096.36-419.456-.563.096-.144.192-.12.324-.072.132.048.837.395.981.467.144.072.24.108.276.168.036.06.036.35-.108.755z" />
+          </svg>
+          Send Booking via WhatsApp
+        </button>
+
+        <div class="flex items-center justify-between text-xs text-stone-400 px-1 pt-1">
+          <span>Or call directly:</span>
+          <a href={`tel:${SITE_CONFIG.phoneTel}`} class="text-amber-300 font-semibold hover:underline">
+            {SITE_CONFIG.phoneInternational}
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script define:vars={{ whatsappNumber: SITE_CONFIG.whatsappNumber, businessName: SITE_CONFIG.businessName }}>
+  const modal = document.getElementById('enquiry-modal');
+  const closeBtn = document.getElementById('modal-close-btn');
+  const form = document.getElementById('booking-form');
+
+  const closeModal = () => {
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    }
+  };
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  // Close on outside backdrop click
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  // Close on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+
+  // Handle WhatsApp form submission
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('modal-name')).value;
+      const phone = (document.getElementById('modal-phone')).value;
+      const service = (document.getElementById('modal-service')).value;
+      const date = (document.getElementById('modal-date')).value || 'Flexible';
+      const time = (document.getElementById('modal-time')).value || 'Anytime';
+      const notes = (document.getElementById('modal-notes')).value;
+
+      let message = `Hello *${businessName}*,\n\nI would like to book / enquire:\n`;
+      message += `• *Name:* ${name}\n`;
+      message += `• *Phone:* ${phone}\n`;
+      message += `• *Interest:* ${service}\n`;
+      message += `• *Preferred Date:* ${date}\n`;
+      message += `• *Preferred Time:* ${time}\n`;
+      if (notes) {
+        message += `• *Notes:* ${notes}\n`;
+      }
+      message += `\nPlease confirm availability. Thank you!`;
+
+      const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
+      closeModal();
+    });
+  }
+</script>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="100%" height="100%" fill="none" role="img" aria-label="Monik's Salon &amp; Academy Logo">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCEFD5" />
+      <stop offset="35%" stop-color="#E5B972" />
+      <stop offset="70%" stop-color="#C59341" />
+      <stop offset="100%" stop-color="#F3DCAB" />
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#EAC878" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#B8860B" stop-opacity="0.9" />
+    </linearGradient>
+    <filter id="subtleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Circular Monogram Emblem -->
+  <g transform="translate(10, 10)">
+    <!-- Outer delicate ring -->
+    <circle cx="50" cy="50" r="46" stroke="url(#ringGrad)" stroke-width="1.5" stroke-dasharray="3 2" />
+    <!-- Inner solid ring -->
+    <circle cx="50" cy="50" r="41" stroke="url(#goldGrad)" stroke-width="1.8" />
+    <!-- Subtle glow ring -->
+    <circle cx="50" cy="50" r="37" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.4" />
+    
+    <!-- Accent Star / Sparkle Dots -->
+    <circle cx="50" cy="6" r="2" fill="url(#goldGrad)" />
+    <circle cx="50" cy="94" r="2" fill="url(#goldGrad)" />
+    <circle cx="6" cy="50" r="2" fill="url(#goldGrad)" />
+    <circle cx="94" cy="50" r="2" fill="url(#goldGrad)" />
+
+    <!-- Stylized Luxury "M" Monogram -->
+    <path d="M 28 68 L 28 32 C 28 32, 33 46, 50 63 C 67 46, 72 32, 72 32 L 72 68 M 41 48 L 50 58 L 59 48" 
+          stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Crown / Tiara subtle motif above M -->
+    <path d="M 42 27 L 50 21 L 58 27 L 55 30 L 45 30 Z" fill="url(#goldGrad)" opacity="0.9" />
+    <circle cx="50" cy="18" r="1.5" fill="url(#goldGrad)" />
+  </g>
+
+  <!-- Typography: MONIK'S -->
+  <g transform="translate(125, 20)">
+    <text x="0" y="42" font-family="'Playfair Display', Georgia, serif" font-size="38" font-weight="700" letter-spacing="4" fill="url(#goldGrad)">
+      MONIK'S
+    </text>
+    
+    <!-- Subtitle: SALON & ACADEMY -->
+    <text x="3" y="65" font-family="'Inter', -apple-system, sans-serif" font-size="13.5" font-weight="600" letter-spacing="5.5" fill="#E8DCD1">
+      SALON &amp; ACADEMY
+    </text>
+
+    <!-- Location & Badge: MAHAD • WOMEN-OWNED -->
+    <text x="3" y="83" font-family="'Inter', -apple-system, sans-serif" font-size="9.5" font-weight="500" letter-spacing="2.5" fill="#B3A293">
+      MAHAD, MAHARASHTRA &bull; ESTD. BEAUTY &amp; EDUCATION
+    </text>
+
+    <!-- Delicate horizontal divider line -->
+    <line x1="3" y1="71" x2="260" y2="71" stroke="url(#goldGrad)" stroke-width="0.75" opacity="0.5" />
+  </g>
+</svg>

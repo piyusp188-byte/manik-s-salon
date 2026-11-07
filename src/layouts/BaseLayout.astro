@@ -1,0 +1,174 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileBar from '../components/MobileBar.astro';
+import EnquiryModal from '../components/EnquiryModal.astro';
+import { SITE_CONFIG } from '../data/siteData';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+  schema?: Record<string, any> | Array<Record<string, any>>;
+}
+
+const {
+  title = `${SITE_CONFIG.businessName} | Beauty Salon & Makeup Academy in Mahad`,
+  description = "Monik's Salon & Academy in Mahad, Maharashtra. Expert makeup artist, bridal makeup, hydra facials, mehndi designs, hair care, and professional beauty academy courses. Rated 4.7★ on Google. Call +91 84460 03385.",
+  image = "/images/og-default.jpg",
+  canonicalUrl = Astro.url.href,
+  schema
+} = Astro.props;
+
+// Standard LocalBusiness (BeautySalon) schema
+const defaultLocalBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "BeautySalon"],
+  "@id": "https://monikssalon.com/#business",
+  "name": SITE_CONFIG.businessName,
+  "url": "https://monikssalon.com/",
+  "telephone": SITE_CONFIG.phoneInternational,
+  "priceRange": "$$",
+  "currenciesAccepted": "INR",
+  "paymentAccepted": "Cash, UPI",
+  "image": "https://monikssalon.com/logo.svg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": SITE_CONFIG.address.street,
+    "addressLocality": SITE_CONFIG.address.city,
+    "addressRegion": SITE_CONFIG.address.state,
+    "postalCode": SITE_CONFIG.address.postalCode,
+    "addressCountry": SITE_CONFIG.address.countryCode
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": SITE_CONFIG.geo.latitude,
+    "longitude": SITE_CONFIG.geo.longitude
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "10:00",
+      "closes": "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday"],
+      "opens": "09:00",
+      "closes": "20:00"
+    }
+  ],
+  "sameAs": [
+    SITE_CONFIG.mapsUrl
+  ],
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Mahad, Maharashtra"
+  },
+  "knowsAbout": [
+    "Bridal Makeup",
+    "Self-Makeup Classes",
+    "Mehndi Designs",
+    "Hydra Facial",
+    "Skin Care",
+    "Hair Care & Styling",
+    "Pedicure",
+    "Beauty Academy Courses"
+  ]
+};
+
+const allSchemas = schema 
+  ? (Array.isArray(schema) ? [defaultLocalBusinessSchema, ...schema] : [defaultLocalBusinessSchema, schema])
+  : [defaultLocalBusinessSchema];
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0c0a09" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content={SITE_CONFIG.businessName} />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Google Fonts Preconnect & Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" 
+      rel="stylesheet" 
+    />
+
+    <!-- JSON-LD Structured Data -->
+    {allSchemas.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
+  </head>
+  <body class="bg-stone-950 text-stone-100 font-sans antialiased selection:bg-amber-500/30 selection:text-amber-200 min-h-screen flex flex-col pb-16 md:pb-0">
+    <!-- Skip to main content for accessibility -->
+    <a 
+      href="#main-content" 
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-amber-500 text-stone-950 font-bold px-4 py-2 rounded-md shadow-lg"
+    >
+      Skip to main content
+    </a>
+
+    <Header />
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+    <MobileBar />
+    <EnquiryModal />
+
+    <!-- Global interactive handlers: modal triggers, smooth scrolling, video toggles -->
+    <script>
+      // Global enquiry modal trigger
+      window.openEnquiryModal = (serviceName = '') => {
+        const modal = document.getElementById('enquiry-modal');
+        const select = document.getElementById('modal-service') as HTMLSelectElement | null;
+        if (modal) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.classList.add('overflow-hidden');
+          if (select && serviceName) {
+            select.value = serviceName;
+          }
+          const firstInput = modal.querySelector('input') as HTMLInputElement | null;
+          if (firstInput) firstInput.focus();
+        }
+      };
+
+      // Expose to window for inline onclicks
+      (window as any).openEnquiryModal = window.openEnquiryModal;
+    </script>
+  </body>
+</html>

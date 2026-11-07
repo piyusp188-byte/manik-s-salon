@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { SITE_CONFIG, SERVICES, COURSES } from '../data/siteData';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Contact', url: '/contact/' }
+];
+---
+
+<BaseLayout
+  title={`Contact & Location | Monik's Salon & Academy, Mahad Maharashtra`}
+  description="Contact Monik's Salon & Academy in Mahad. Located on M.G Road, Bazar Peth, near Ratrani (Budget Food Store). Phone: +91 84460 03385. Open 10 AM – 8 PM. Map, directions & booking form."
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- Page Header -->
+  <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-stone-800/80">
+    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full">
+      Find Us in Mahad
+    </span>
+    <h1 class="text-3xl sm:text-5xl font-serif font-bold text-stone-100 mt-4">
+      Contact &amp; Location
+    </h1>
+    <p class="text-xs sm:text-sm text-stone-300 max-w-2xl mx-auto mt-3 leading-relaxed">
+      Have a question about our services, bridal bookings, or academy batches? Visit us, call, or message us directly on WhatsApp.
+    </p>
+  </section>
+
+  <!-- Two Column Layout: Details & Form + Map -->
+  <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <!-- Col 1: NAP Details & Quick Links -->
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-2xl font-serif font-bold text-stone-100">
+            Visit Our Salon
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-400 mt-1">
+            Centrally located in Bazar Peth, Navipeth, Mahad.
+          </p>
+        </div>
+
+        <!-- Address Card -->
+        <div class="p-5 rounded-2xl bg-stone-900/60 border border-stone-800 text-xs sm:text-sm space-y-3">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <div>
+              <strong class="text-stone-100 block font-semibold text-sm">Monik's Salon &amp; Academy</strong>
+              <p class="text-stone-300 mt-0.5 leading-relaxed">
+                {SITE_CONFIG.address.street},<br />
+                {SITE_CONFIG.address.locality}, {SITE_CONFIG.address.city},<br />
+                {SITE_CONFIG.address.state} &ndash; {SITE_CONFIG.address.postalCode}
+              </p>
+              <p class="text-stone-400 text-xs mt-1">
+                <strong class="text-amber-300">Landmark:</strong> Near Ratrani, located inside Budget Food Store.
+              </p>
+              <p class="text-stone-500 text-[11px] mt-0.5">
+                Plus Code: {SITE_CONFIG.address.plusCode}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone & WhatsApp Card -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a
+            href={`tel:${SITE_CONFIG.phoneTel}`}
+            class="p-5 rounded-2xl bg-stone-900/60 border border-stone-800 hover:border-amber-400/50 transition-colors flex items-center gap-3.5"
+          >
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </div>
+            <div>
+              <span class="block text-[11px] uppercase tracking-wider text-stone-400 font-medium">Direct Call</span>
+              <span class="text-sm font-semibold text-stone-100">{SITE_CONFIG.phoneInternational}</span>
+            </div>
+          </a>
+
+          <a
+            href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(SITE_CONFIG.whatsappDefaultMessage)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-5 rounded-2xl bg-emerald-950/40 border border-emerald-800/50 hover:border-emerald-600 transition-colors flex items-center gap-3.5"
+          >
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-300 shrink-0">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.076-1.924-.442-1.428-.601-2.346-2.072-2.417-2.169-.072-.096-.576-.767-.576-1.464 0-.697.362-1.039.49-1.182.128-.143.281-.179.375-.179.094 0 .188.001.27.006.086.004.202-.033.315.24.116.282.399.972.433 1.043.035.071.058.155.011.25-.046.096-.07.155-.139.238-.07.083-.146.185-.209.248-.07.071-.143.148-.061.288.083.14.367.606.788.981.542.482.999.631 1.139.701.141.07.224.06.308-.036.084-.096.36-419.456-.563.096-.144.192-.12.324-.072.132.048.837.395.981.467.144.072.24.108.276.168.036.06.036.35-.108.755z" />
+              </svg>
+            </div>
+            <div>
+              <span class="block text-[11px] uppercase tracking-wider text-emerald-400 font-medium">WhatsApp Booking</span>
+              <span class="text-sm font-semibold text-emerald-200">Chat Instantly</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Hours Card -->
+        <div class="p-5 rounded-2xl bg-stone-900/60 border border-stone-800 text-xs space-y-2">
+          <div class="flex items-center gap-2 text-stone-100 font-semibold text-sm">
+            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Opening Hours</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-stone-800 text-stone-300">
+            <span>Monday &ndash; Saturday</span>
+            <span class="font-medium text-stone-100">{SITE_CONFIG.openingHours.weekdays}</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-stone-800 text-stone-300">
+            <span>Sunday</span>
+            <span class="font-medium text-stone-100">{SITE_CONFIG.openingHours.sundays}</span>
+          </div>
+          <p class="text-[11px] text-amber-300/80 pt-1 leading-relaxed">
+            *{SITE_CONFIG.openingHours.festivalNotice}
+          </p>
+        </div>
+
+        <!-- Directions Button -->
+        <div>
+          <a
+            href={SITE_CONFIG.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl text-xs font-bold uppercase tracking-wider text-stone-950 bg-gradient-to-r from-amber-300 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-md transition-all"
+          >
+            Open in Google Maps Application &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Interactive Google Map Embed & On-page Enquiry Form -->
+      <div class="space-y-8">
+        <!-- Google Map Embed -->
+        <div class="rounded-2xl overflow-hidden border border-stone-800 bg-stone-900 aspect-[16/10] shadow-2xl relative">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3789.2892976156066!2d73.4145113!3d18.0833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be8533b37077bc1%3A0xb697dbb69c792f8a!2sMonik&#39;s%20Salon%20%26%20Academy!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Google Map location of Monik's Salon & Academy, Mahad"
+            class="w-full h-full filter contrast-125 brightness-90 grayscale-[20%]"
+          ></iframe>
+        </div>
+
+        <!-- On-Page Quick Form -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-stone-900/60 border border-stone-800">
+          <h3 class="text-xl font-serif font-bold text-stone-100 mb-2">
+            Send an Online Enquiry
+          </h3>
+          <p class="text-xs text-stone-400 mb-5">
+            Fill out the form below to generate a pre-filled WhatsApp message directly to our desk.
+          </p>
+
+          <form id="contact-page-form" class="space-y-4">
+            <div>
+              <label for="contact-name" class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">
+                Your Name *
+              </label>
+              <input
+                type="text"
+                id="contact-name"
+                required
+                placeholder="e.g. Srushti Deshmukh"
+                class="w-full px-3.5 py-2.5 rounded-lg bg-stone-950 border border-stone-700 text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 placeholder:text-stone-600"
+              />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="contact-phone" class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  id="contact-phone"
+                  required
+                  placeholder="e.g. 9876543210"
+                  class="w-full px-3.5 py-2.5 rounded-lg bg-stone-950 border border-stone-700 text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 placeholder:text-stone-600"
+                />
+              </div>
+
+              <div>
+                <label for="contact-service" class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">
+                  Interested In *
+                </label>
+                <select
+                  id="contact-service"
+                  required
+                  class="w-full px-3.5 py-2.5 rounded-lg bg-stone-950 border border-stone-700 text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                >
+                  <option value="" disabled selected>-- Select --</option>
+                  <optgroup label="Services">
+                    {SERVICES.map((s) => (
+                      <option value={s.name}>{s.name}</option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Academy Courses">
+                    {COURSES.map((c) => (
+                      <option value={c.title}>{c.title}</option>
+                    ))}
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="contact-message" class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">
+                Message (Optional)
+              </label>
+              <textarea
+                id="contact-message"
+                rows="3"
+                placeholder="Share your preferred date or questions..."
+                class="w-full px-3.5 py-2.5 rounded-lg bg-stone-950 border border-stone-700 text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 placeholder:text-stone-600 resize-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full py-3 px-4 rounded-xl text-stone-950 font-bold bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 transition-all text-xs uppercase tracking-wider shadow cursor-pointer"
+            >
+              Send Request to Monik's Salon via WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script define:vars={{ whatsappNumber: SITE_CONFIG.whatsappNumber, businessName: SITE_CONFIG.businessName }}>
+  const form = document.getElementById('contact-page-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('contact-name')).value;
+      const phone = (document.getElementById('contact-phone')).value;
+      const service = (document.getElementById('contact-service')).value;
+      const message = (document.getElementById('contact-message')).value;
+
+      let text = `Hello *${businessName}*,\n\nI am contacting you from your website contact page:\n`;
+      text += `• *Name:* ${name}\n`;
+      text += `• *Phone:* ${phone}\n`;
+      text += `• *Service/Course:* ${service}\n`;
+      if (message) {
+        text += `• *Message:* ${message}\n`;
+      }
+      text += `\nPlease let me know available slots. Thank you!`;
+
+      const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+      window.open(waUrl, '_blank');
+    });
+  }
+</script>

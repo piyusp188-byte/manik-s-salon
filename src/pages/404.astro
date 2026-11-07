@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../data/siteData';
+---
+
+<BaseLayout
+  title={`Page Not Found | ${SITE_CONFIG.businessName}`}
+  description="The page you are looking for does not exist. Explore Monik's Salon & Academy services, courses, or contact details in Mahad."
+>
+  <section class="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto text-center">
+    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full">
+      Error 404
+    </span>
+    <h1 class="text-4xl sm:text-6xl font-serif font-bold text-stone-100 mt-4">
+      Page Not Found
+    </h1>
+    <p class="text-xs sm:text-sm text-stone-300 mt-4 max-w-md mx-auto leading-relaxed">
+      We couldn't find the page you were looking for. Perhaps you'd like to browse our salon services or explore our academy courses in Mahad.
+    </p>
+
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="/"
+        class="px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-stone-950 bg-gradient-to-r from-amber-300 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-md transition-all"
+      >
+        Return to Home &rarr;
+      </a>
+      <a
+        href="/services/"
+        class="px-6 py-3 rounded-xl text-xs font-semibold text-stone-200 bg-stone-900 border border-stone-700 hover:border-amber-400"
+      >
+        View Services Menu
+      </a>
+    </div>
+  </section>
+</BaseLayout>

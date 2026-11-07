@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <radialGradient id="heroDark" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#241d18" />
+      <stop offset="50%" stop-color="#141110" />
+      <stop offset="100%" stop-color="#080706" />
+    </radialGradient>
+    <radialGradient id="goldAmbient" cx="30%" cy="30%" r="40%">
+      <stop offset="0%" stop-color="#d4af37" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#d4af37" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="roseAmbient" cx="70%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#c98a68" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#c98a68" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#heroDark)" />
+  <rect width="1920" height="1080" fill="url(#goldAmbient)" />
+  <rect width="1920" height="1080" fill="url(#roseAmbient)" />
+
+  <!-- Subtle abstract salon silhouettes / floral rings -->
+  <g opacity="0.15" stroke="#e5b972" stroke-width="1.5" fill="none">
+    <circle cx="960" cy="540" r="380" stroke-dasharray="10 8" />
+    <circle cx="960" cy="540" r="460" />
+    <circle cx="960" cy="540" r="540" stroke-dasharray="4 6" />
+  </g>
+</svg>
