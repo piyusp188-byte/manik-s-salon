@@ -10,6 +10,33 @@ import { SITE_CONFIG, SERVICES, COURSES, TESTIMONIALS, WHY_CHOOSE_US, REQUIRED_P
 
 const featuredServices = SERVICES.slice(0, 4);
 const featuredCourses = COURSES.slice(0, 2);
+
+const featuredGallery = [
+  {
+    title: 'Bridal Artistry',
+    subtitle: 'Skin-Tone-Matched Glam',
+    image: '/images/gallery/bridal-makeup.webp',
+    alt: 'Bridal makeup artistry by Monik\'s Salon & Academy in Mahad'
+  },
+  {
+    title: 'Mehndi Designs',
+    subtitle: 'Traditional & Arabic Henna',
+    image: '/images/gallery/bridal-mehndi.webp',
+    alt: 'Intricate bridal mehndi design'
+  },
+  {
+    title: 'Hydra Facial',
+    subtitle: 'Deep Pore Rejuvenation',
+    image: '/images/gallery/hydra-facial.webp',
+    alt: 'Hydra facial deep skin cleansing treatment'
+  },
+  {
+    title: 'Academy Training',
+    subtitle: 'Hands-on Student Practice',
+    image: '/images/gallery/academy-makeup.webp',
+    alt: 'Monik\'s Academy hands-on student training session'
+  }
+];
 ---
 
 <BaseLayout
@@ -161,39 +188,55 @@ const featuredCourses = COURSES.slice(0, 2);
   <!-- 7. Real Work Gallery Preview (Neutral Placeholders) -->
   <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-[#E8D9DE]" aria-labelledby="gallery-heading">
     <div class="text-center max-w-3xl mx-auto mb-12">
-      <span class="px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#6B2D5E] bg-[#FBEFF1] border border-[#E8D9DE] rounded-full">
+      <span class="px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#6B2D5E] bg-[#FBEFF1] border border-[#E8D9DE] rounded-full inline-block">
         Visual Showcase
       </span>
       <h2 id="gallery-heading" class="text-3xl sm:text-4xl font-display font-bold text-[#2B2024] mt-3">
         Our Artistry in Pictures
       </h2>
-      <p class="text-sm sm:text-base text-[#5A4553] mt-3">
-        We never use fake stock photos. Below are designated showcase slots ready for the salon owner's real photography.
+      <p class="text-sm sm:text-base text-[#5A4553] mt-3 leading-relaxed">
+        A glimpse of our signature bridal transformations, intricate henna designs, revitalizing hydra facials, and academy training sessions.
       </p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      {REQUIRED_PHOTOS_LIST.slice(0, 4).map((item) => (
-        <div class="aspect-square rounded-2xl bg-white border border-dashed border-[#E8D9DE] p-4 flex flex-col items-center justify-center text-center group hover:border-[#6B2D5E]/60 transition-colors shadow-sm">
-          <div class="w-12 h-12 rounded-full bg-[#FBEFF1] flex items-center justify-center text-[#6B2D5E] mb-3 group-hover:scale-105 transition-transform">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {featuredGallery.map((item) => (
+        <a 
+          href="/gallery/" 
+          class="group relative rounded-2xl overflow-hidden bg-white border border-[#E8D9DE] shadow-sm hover:shadow-xl transition-all duration-300 block"
+        >
+          <div class="aspect-[4/3] overflow-hidden bg-[#FBEFF1] relative">
+            <img 
+              src={item.image} 
+              alt={item.alt}
+              loading="lazy"
+              decoding="async"
+              width="600"
+              height="450"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-75 group-hover:opacity-90 transition-opacity"></div>
+            
+            <div class="absolute bottom-0 inset-x-0 p-4 text-white">
+              <span class="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white bg-[#6B2D5E]/85 backdrop-blur-sm rounded-full inline-block mb-1.5 shadow-sm">
+                {item.subtitle}
+              </span>
+              <h3 class="text-base font-display font-bold text-white group-hover:text-[#FBEFF1] transition-colors flex items-center justify-between">
+                <span>{item.title}</span>
+                <span class="text-xs transform translate-x-0 group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </h3>
+            </div>
           </div>
-          <span class="text-sm font-display font-bold text-[#2B2024]">
-            {item.category}
-          </span>
-          <span class="text-[10px] text-[#C4845A] font-semibold mt-1">
-            [Real Photo Needed]
-          </span>
-        </div>
+        </a>
       ))}
     </div>
 
-    <div class="text-center mt-8">
-      <a href="/gallery/" class="text-xs font-bold text-[#6B2D5E] hover:underline">
-        Browse Full Work Gallery &amp; Photo Checklist &rarr;
+    <div class="text-center mt-10">
+      <a 
+        href="/gallery/" 
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-[#6B2D5E] hover:bg-[#4E1E45] transition-colors shadow-sm"
+      >
+        <span>Explore Full 12-Photo Gallery &rarr;</span>
       </a>
     </div>
   </section>

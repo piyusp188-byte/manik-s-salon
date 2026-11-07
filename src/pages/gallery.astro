@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
-import { SITE_CONFIG, REQUIRED_PHOTOS_LIST } from '../data/siteData';
+import { SITE_CONFIG } from '../data/siteData';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -9,120 +9,371 @@ const breadcrumbs = [
 ];
 
 const galleryItems = [
-  { id: 1, title: 'Skin-Tone-Matched Bridal Makeup', category: 'makeup', label: 'Bridal Artistry', tag: 'Real Photo Needed' },
-  { id: 2, title: 'Engagement Glam & Eye Makeup', category: 'makeup', label: 'Party Makeup', tag: 'Real Photo Needed' },
-  { id: 3, title: 'Traditional Bridal Full-Hand Mehndi', category: 'mehndi', label: 'Mehndi Design', tag: 'Real Photo Needed' },
-  { id: 4, title: 'Contemporary Arabic Floral Henna', category: 'mehndi', label: 'Mehndi Design', tag: 'Real Photo Needed' },
-  { id: 5, title: 'Hydra Facial Rejuvenation & Deep Pore Cleanse', category: 'skincare', label: 'Hydra Facial', tag: 'Real Photo Needed' },
-  { id: 6, title: 'Skin Barrier & Hydration Therapy Suite', category: 'skincare', label: 'Skin Care', tag: 'Real Photo Needed' },
-  { id: 7, title: 'Intensive Hair Spa & Deep Conditioning', category: 'haircare', label: 'Hair Care', tag: 'Real Photo Needed' },
-  { id: 8, title: 'Deluxe Foot Care & Pedicure Station', category: 'pedicure', label: 'Pedicure', tag: 'Real Photo Needed' },
-  { id: 9, title: 'Hands-on Makeup Academy Practice Session', category: 'academy', label: 'Academy Class', tag: 'Real Photo Needed' },
-  { id: 10, title: 'Mehndi Cone Control & Student Practice', category: 'academy', label: 'Academy Class', tag: 'Real Photo Needed' },
-  { id: 11, title: 'Salon Ambience & Reception Area', category: 'salon', label: 'Interior', tag: 'Real Photo Needed' },
-  { id: 12, title: 'Client Consultation & Shade Matching', category: 'salon', label: 'Consultation', tag: 'Real Photo Needed' },
+  {
+    id: 1,
+    title: 'Skin-Tone-Matched Bridal Makeup',
+    category: 'makeup',
+    label: 'Bridal Artistry',
+    image: '/images/gallery/bridal-makeup.webp',
+    alt: 'Radiant Indian bride with skin-tone matched glowing makeup and traditional bridal jewelry',
+    description: 'Bespoke bridal glam tailored to unique Indian undertones with warm plum accents, champagne gold eyes, and a lightweight, all-day finish.'
+  },
+  {
+    id: 2,
+    title: 'Engagement & Party Glam',
+    category: 'makeup',
+    label: 'Party Makeup',
+    image: '/images/gallery/party-makeup.webp',
+    alt: 'Flawless evening party glam with subtle smoky eyes, sculpted cheekbones, and soft rose lips',
+    description: 'Chic celebration glam with soft smoky eye makeup, luminous skin, and delicate nude-rose tones designed for engagement parties and receptions.'
+  },
+  {
+    id: 3,
+    title: 'Traditional Bridal Full-Hand Mehndi',
+    category: 'mehndi',
+    label: 'Bridal Henna',
+    image: '/images/gallery/bridal-mehndi.webp',
+    alt: 'Detailed traditional bridal henna design covering palms and wrists with peacock and lotus motifs',
+    description: 'Intricate traditional bridal henna applied with fine cone control, featuring graceful peacock motifs, floral mandalas, and deep natural stain.'
+  },
+  {
+    id: 4,
+    title: 'Contemporary Arabic Floral Henna',
+    category: 'mehndi',
+    label: 'Arabic Henna',
+    image: '/images/gallery/arabic-mehndi.webp',
+    alt: 'Modern Arabic floral vine henna pattern trailing across hand and fingers with open skin space',
+    description: 'Flowing Arabic henna art blending bold floral shading and delicate lace mesh vines, ideal for festive celebrations and bridesmaid gatherings.'
+  },
+  {
+    id: 5,
+    title: 'Hydra Facial Rejuvenation & Deep Cleanse',
+    category: 'skincare',
+    label: 'Hydra Facial',
+    image: '/images/gallery/hydra-facial.webp',
+    alt: 'Aesthetician performing gentle hydra facial vacuum infusion on glowing refreshed skin',
+    description: 'Non-invasive vortex dermal infusion that deep-cleanses pores, exfoliates dead skin cells, and floods the dermis with hydrating serums.'
+  },
+  {
+    id: 6,
+    title: 'Skin Barrier & Hydration Therapy Suite',
+    category: 'skincare',
+    label: 'Skin Care',
+    image: '/images/gallery/skincare-therapy.webp',
+    alt: 'Curated skincare setup with golden serum dropper bottles, rosewater mist, and soothing botanicals',
+    description: 'Carefully curated botanical serums and barrier-nourishing formulas used during our customized skincare consultations and facial regimens.'
+  },
+  {
+    id: 7,
+    title: 'Intensive Hair Spa & Deep Conditioning',
+    category: 'haircare',
+    label: 'Hair Care',
+    image: '/images/gallery/hair-spa.webp',
+    alt: 'Hair stylist blow-drying and styling glossy healthy hair with a round brush at a salon station',
+    description: 'Revitalizing deep conditioning mask, scalp massage, and smooth blowout styling to restore gloss, softness, and resilience to dull hair.'
+  },
+  {
+    id: 8,
+    title: 'Deluxe Foot Care & Aromatic Pedicure',
+    category: 'pedicure',
+    label: 'Pedicure',
+    image: '/images/gallery/pedicure.webp',
+    alt: 'Luxury pedicure station with hammered copper foot bath filled with warm water and fresh rose petals',
+    description: 'A relaxing foot spa featuring an aromatic botanical soak, gentle scrub exfoliation, cuticle care, heel smoothing, and soothing massage.'
+  },
+  {
+    id: 9,
+    title: 'Hands-on Makeup Academy Practice Session',
+    category: 'academy',
+    label: 'Academy Class',
+    image: '/images/gallery/academy-makeup.webp',
+    alt: 'Beauty academy workshop with instructor demonstrating brush blending on a live model',
+    description: 'Students mastering live brush techniques, color theory, and step-by-step foundation blending under close personal mentorship.'
+  },
+  {
+    id: 10,
+    title: 'Mehndi Cone Control & Student Practice',
+    category: 'academy',
+    label: 'Academy Class',
+    image: '/images/gallery/academy-mehndi.webp',
+    alt: 'Henna academy instructor guiding a student holding a cone to draw intricate patterns',
+    description: 'Beginner-friendly mehndi coaching focusing on steady cone pressure, clean line work, and traditional motifs taught like a friend.'
+  },
+  {
+    id: 11,
+    title: 'Salon Ambience & Reception Area',
+    category: 'salon',
+    label: 'Interior',
+    image: '/images/gallery/salon-interior.webp',
+    alt: 'Warm welcoming salon interior with arched vanity mirrors, plush rose chairs, and reception desk',
+    description: 'Our serene, women-friendly sanctuary in Navipeth, Mahad, designed for maximum comfort, hygiene, and pampering.'
+  },
+  {
+    id: 12,
+    title: 'Client Consultation & Shade Matching',
+    category: 'salon',
+    label: 'Consultation',
+    image: '/images/gallery/shade-matching.webp',
+    alt: 'Beauty stylist holding shade swatches against client cheek under balanced salon lighting',
+    description: 'Precise shade-matching consultation ensuring your foundation formula harmonizes naturally with your skin undertone under daylight lighting.'
+  }
 ];
 ---
 
 <BaseLayout
-  title={`Work Gallery | Bridal Makeup & Mehndi Photos | ${SITE_CONFIG.businessName}`}
-  description="Explore the artistry gallery of Monik's Salon & Academy in Mahad. Real photos of bridal makeup, mehndi designs, hydra facials, and beauty academy student sessions."
+  title={`Artistry & Academy Gallery | Photos | ${SITE_CONFIG.businessName}`}
+  description="Explore the artistry gallery of Monik's Salon & Academy in Mahad. View photos of skin-tone-matched bridal makeup, mehndi designs, hydra facials, and academy classes."
 >
   <Breadcrumb items={breadcrumbs} />
 
   <!-- Page Header -->
   <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-[#E8D9DE]" aria-labelledby="gallery-title">
-    <span class="px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#6B2D5E] bg-[#FBEFF1] border border-[#E8D9DE] rounded-full">
-      Visual Portfolio
+    <span class="px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#6B2D5E] bg-[#FBEFF1] border border-[#E8D9DE] rounded-full inline-block">
+      Visual Showcase
     </span>
     <h1 id="gallery-title" class="text-3xl sm:text-5xl font-display font-bold text-[#2B2024] mt-4">
       Our Artistry &amp; Academy Work
     </h1>
     <p class="text-sm sm:text-base text-[#5A4553] max-w-2xl mx-auto mt-3 leading-relaxed">
-      A transparent visual record of our salon work and academy sessions. We strictly do not use stock photos of fake models; real photography from our salon will appear here.
+      A photographic look at our signature bridal makeup, henna artistry, skin therapies, and academy student workshops at Monik's Salon &amp; Academy in Mahad.
     </p>
 
     <!-- Filter Buttons (JavaScript filtered) -->
-    <div class="flex flex-wrap items-center justify-center gap-2 mt-8" id="gallery-filter-buttons">
-      <button type="button" data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-[#6B2D5E] text-white transition-colors shadow-sm">
-        All Work
+    <div class="flex flex-wrap items-center justify-center gap-2 mt-8" id="gallery-filter-buttons" role="tablist" aria-label="Gallery category filters">
+      <button type="button" data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-[#6B2D5E] text-white transition-colors shadow-sm cursor-pointer">
+        All Work (12)
       </button>
-      <button type="button" data-filter="makeup" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-[#2B2024] bg-white border border-[#E8D9DE] hover:text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors">
-        Makeup
+      <button type="button" data-filter="makeup" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-[#2B2024] bg-white border border-[#E8D9DE] hover:text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors cursor-pointer">
+        Bridal &amp; Makeup
       </button>
-      <button type="button" data-filter="mehndi" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-[#2B2024] bg-white border border-[#E8D9DE] hover:text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors">
-        Mehndi
+      <button type="button" data-filter="mehndi" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-[#2B2024] bg-white border border-[#E8D9DE] hover:text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors cursor-pointer">
+        Mehndi Art
       </button>
-      <button type="button" data-filter="skincare" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-[#2B2024] bg-white border border-[#E8D9DE] hover:text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors">
-        Facial &amp; Skin Care
+      <button type="button" data-filter="skincare" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-[#2B2024] bg-white border border-[#E8D9DE] hover:text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors cursor-pointer">
+        Facial &amp; Skin
       </button>
-      <button type="button" data-filter="academy" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-[#2B2024] bg-white border border-[#E8D9DE] hover:text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors">
+      <button type="button" data-filter="hair-pedicure" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-[#2B2024] bg-white border border-[#E8D9DE] hover:text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors cursor-pointer">
+        Hair &amp; Pedicure
+      </button>
+      <button type="button" data-filter="academy" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-[#2B2024] bg-white border border-[#E8D9DE] hover:text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors cursor-pointer">
         Academy Classes
+      </button>
+      <button type="button" data-filter="salon" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-[#2B2024] bg-white border border-[#E8D9DE] hover:text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors cursor-pointer">
+        Salon Ambience
       </button>
     </div>
   </section>
 
   <!-- Gallery Grid -->
   <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="gallery-grid">
       {galleryItems.map((item) => (
-        <div 
-          class="gallery-item group relative rounded-2xl overflow-hidden bg-white border border-[#E8D9DE] p-5 flex flex-col justify-between hover:border-[#6B2D5E]/60 transition-all duration-300 shadow-sm hover:shadow-md"
+        <article
+          class="gallery-item group relative rounded-2xl overflow-hidden bg-white border border-[#E8D9DE] flex flex-col justify-between hover:border-[#6B2D5E]/60 transition-all duration-300 shadow-sm hover:shadow-lg"
           data-category={item.category}
+          data-group={item.category === 'haircare' || item.category === 'pedicure' ? 'hair-pedicure' : item.category}
         >
-          <!-- Placeholder Graphic -->
-          <div class="aspect-[4/3] rounded-xl bg-[#FFF9F5] border border-dashed border-[#E8D9DE] flex flex-col items-center justify-center p-4 text-center group-hover:border-[#6B2D5E]/40 transition-colors">
-            <div class="w-12 h-12 rounded-full bg-[#FBEFF1] border border-[#E8D9DE] flex items-center justify-center text-[#6B2D5E] mb-3 group-hover:scale-105 transition-transform">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
+          <!-- Image Box with Click-to-Zoom -->
+          <div 
+            class="gallery-clickable relative aspect-[4/3] overflow-hidden bg-[#FBEFF1] cursor-pointer"
+            data-img={item.image}
+            data-title={item.title}
+            data-category={item.label}
+            data-desc={item.description}
+            data-alt={item.alt}
+            tabindex="0"
+            role="button"
+            aria-label={`View larger photo of ${item.title}`}
+          >
+            <img
+              src={item.image}
+              alt={item.alt}
+              loading="lazy"
+              decoding="async"
+              width="800"
+              height="600"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            />
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <span class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-black/60 backdrop-blur-sm border border-white/20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+                Click to Enlarge
+              </span>
             </div>
-            <span class="text-sm font-display font-bold text-[#2B2024]">
-              {item.title}
-            </span>
-            <span class="inline-block mt-1 px-2.5 py-0.5 text-[10px] font-bold text-[#6B2D5E] bg-[#FBEFF1] border border-[#E8D9DE] rounded-full">
-              [{item.tag}]
-            </span>
+
+            <!-- Top Tag Pill -->
+            <div class="absolute top-3 left-3">
+              <span class="px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white bg-[#6B2D5E]/85 backdrop-blur-md rounded-full shadow-sm">
+                {item.label}
+              </span>
+            </div>
           </div>
 
-          <!-- Bottom Metadata -->
-          <div class="mt-4 flex items-center justify-between text-xs">
-            <span class="text-[#5A4553] font-medium">{item.label}</span>
-            <button
-              type="button"
-              onclick={`window.openEnquiryModal('Gallery Interest: ${item.title}')`}
-              class="text-[#6B2D5E] font-bold hover:underline"
-            >
-              Enquire &rarr;
-            </button>
+          <!-- Bottom Card Content -->
+          <div class="p-5 flex flex-col justify-between flex-grow">
+            <div>
+              <h2 class="text-base sm:text-lg font-display font-bold text-[#2B2024] group-hover:text-[#6B2D5E] transition-colors line-clamp-1">
+                {item.title}
+              </h2>
+              <p class="text-xs text-[#5A4553] mt-1.5 leading-relaxed line-clamp-2">
+                {item.description}
+              </p>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="mt-4 pt-3.5 border-t border-[#E8D9DE]/70 flex items-center justify-between text-xs">
+              <button
+                type="button"
+                class="gallery-preview-btn text-[#5A4553] hover:text-[#6B2D5E] font-semibold flex items-center gap-1 cursor-pointer"
+                data-img={item.image}
+                data-title={item.title}
+                data-category={item.label}
+                data-desc={item.description}
+                data-alt={item.alt}
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                View Details
+              </button>
+              <button
+                type="button"
+                onclick={`window.openEnquiryModal('Gallery Item: ${item.title}')`}
+                class="text-[#6B2D5E] font-bold hover:underline cursor-pointer flex items-center gap-1"
+              >
+                Enquire &rarr;
+              </button>
+            </div>
           </div>
-        </div>
+        </article>
       ))}
     </div>
 
-    <!-- Owner Photo Submission Guide -->
-    <div class="mt-16 p-6 sm:p-8 rounded-3xl bg-white border border-[#E8D9DE] max-w-3xl mx-auto shadow-sm">
-      <h3 class="text-xl font-display font-bold text-[#2B2024] mb-2">
-        Photo Supply Checklist for Owner
-      </h3>
-      <p class="text-xs sm:text-sm text-[#5A4553] mb-4">
-        To complete the gallery with your genuine work, please supply high-resolution photos for each category below:
+    <!-- Booking CTA Banner -->
+    <div class="mt-16 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#6B2D5E] to-[#4E1E45] text-white text-center max-w-4xl mx-auto shadow-xl">
+      <span class="px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#FBEFF1] bg-white/10 border border-white/20 rounded-full inline-block">
+        Personalized Styling
+      </span>
+      <h2 class="text-2xl sm:text-3xl font-display font-bold mt-4">
+        Love What You See? Let's Create Your Look
+      </h2>
+      <p class="text-xs sm:text-sm text-[#FBEFF1]/85 max-w-xl mx-auto mt-2 leading-relaxed">
+        Whether you are planning your bridal makeup, seeking traditional mehndi, or wanting to learn in our academy, our team in Mahad is ready to welcome you.
       </p>
-      <ul class="space-y-2 text-xs sm:text-sm text-[#5A4553]">
-        {REQUIRED_PHOTOS_LIST.map((req) => (
-          <li class="flex items-start gap-2">
-            <span class="text-[#6B2D5E] font-bold">&bull;</span>
-            <div>
-              <strong class="text-[#2B2024]">{req.category}:</strong> {req.description}
-            </div>
-          </li>
-        ))}
-      </ul>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent("Hello Monik's Salon, I saw your work in the gallery and would like to book an appointment.")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-emerald-600 hover:bg-emerald-700 text-white transition-colors shadow"
+        >
+          WhatsApp Booking &rarr;
+        </a>
+        <button
+          type="button"
+          onclick="window.openEnquiryModal('General Gallery Inquiry')"
+          class="px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-white text-[#6B2D5E] hover:bg-[#FBEFF1] transition-colors shadow cursor-pointer"
+        >
+          Send Website Enquiry
+        </button>
+      </div>
     </div>
   </section>
+
+  <!-- Interactive Lightbox Modal -->
+  <div
+    id="lightbox-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightbox-title"
+  >
+    <div class="relative max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[92vh] border border-[#E8D9DE]">
+      <!-- Close Button -->
+      <button
+        id="lightbox-close"
+        type="button"
+        class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition-colors cursor-pointer"
+        aria-label="Close photo view"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Modal Image Viewport -->
+      <div class="md:w-3/5 bg-[#1B1417] flex items-center justify-center p-2 sm:p-4 min-h-[260px] md:min-h-[460px]">
+        <img
+          id="lightbox-img"
+          src=""
+          alt=""
+          class="max-h-[50vh] md:max-h-[80vh] w-full object-contain rounded-xl"
+        />
+      </div>
+
+      <!-- Modal Info Sidebar -->
+      <div class="md:w-2/5 p-6 sm:p-8 flex flex-col justify-between bg-white overflow-y-auto">
+        <div>
+          <span
+            id="lightbox-badge"
+            class="px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#6B2D5E] bg-[#FBEFF1] border border-[#E8D9DE] rounded-full inline-block mb-3"
+          >
+            Category
+          </span>
+          <h3 id="lightbox-title" class="text-xl sm:text-2xl font-display font-bold text-[#2B2024] leading-snug">
+            Title
+          </h3>
+          <p id="lightbox-desc" class="text-xs sm:text-sm text-[#5A4553] mt-3 leading-relaxed">
+            Description
+          </p>
+
+          <!-- Feature Bullets -->
+          <div class="mt-6 space-y-2 text-xs text-[#2B2024] bg-[#FFF9F5] p-4 rounded-2xl border border-[#E8D9DE]">
+            <div class="flex items-center gap-2">
+              <span class="text-[#6B2D5E] font-bold">&check;</span>
+              <span>Available at Monik's Salon &amp; Academy, Mahad</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[#6B2D5E] font-bold">&check;</span>
+              <span>Individual consultation before appointment</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[#6B2D5E] font-bold">&check;</span>
+              <span>Skin-tone matching &amp; hygienic care</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-6 pt-4 border-t border-[#E8D9DE] space-y-2.5">
+          <a
+            id="lightbox-whatsapp-link"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-700 transition-colors shadow-sm"
+          >
+            <span>WhatsApp Enquiry &rarr;</span>
+          </a>
+          <button
+            id="lightbox-form-btn"
+            type="button"
+            class="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-[#6B2D5E] bg-[#FBEFF1] hover:bg-[#E8D9DE] border border-[#E8D9DE] transition-colors cursor-pointer"
+          >
+            <span>Book via Website Form</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </BaseLayout>
 
 <script>
+  // 1. Category Filtering Logic
   const buttons = document.querySelectorAll('.filter-btn');
   const items = document.querySelectorAll('.gallery-item');
 
@@ -130,7 +381,7 @@ const galleryItems = [
     btn.addEventListener('click', () => {
       const filter = btn.getAttribute('data-filter');
 
-      // Update active button classes
+      // Update button active state
       buttons.forEach((b) => {
         b.classList.remove('bg-[#6B2D5E]', 'text-white', 'active');
         b.classList.add('text-[#2B2024]', 'bg-white', 'border', 'border-[#E8D9DE]');
@@ -140,8 +391,10 @@ const galleryItems = [
 
       // Filter gallery cards
       items.forEach((item) => {
-        const itemCategory = item.getAttribute('data-category');
-        if (filter === 'all' || itemCategory === filter) {
+        const itemCat = item.getAttribute('data-category');
+        const itemGroup = item.getAttribute('data-group');
+
+        if (filter === 'all' || itemCat === filter || itemGroup === filter) {
           (item as HTMLElement).style.display = 'flex';
         } else {
           (item as HTMLElement).style.display = 'none';
@@ -149,4 +402,93 @@ const galleryItems = [
       });
     });
   });
+
+  // 2. Lightbox Modal Logic
+  const lightboxModal = document.getElementById('lightbox-modal');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxCategory = document.getElementById('lightbox-badge');
+  const lightboxDesc = document.getElementById('lightbox-desc');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxWhatsApp = document.getElementById('lightbox-whatsapp-link') as HTMLAnchorElement;
+  const lightboxFormBtn = document.getElementById('lightbox-form-btn');
+
+  let currentTitle = '';
+
+  function openLightbox(el: HTMLElement) {
+    const src = el.getAttribute('data-img') || '';
+    const title = el.getAttribute('data-title') || '';
+    const category = el.getAttribute('data-category') || '';
+    const desc = el.getAttribute('data-desc') || '';
+    const alt = el.getAttribute('data-alt') || title;
+
+    currentTitle = title;
+
+    if (lightboxImg) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+    }
+    if (lightboxTitle) lightboxTitle.textContent = title;
+    if (lightboxCategory) lightboxCategory.textContent = category;
+    if (lightboxDesc) lightboxDesc.textContent = desc;
+
+    if (lightboxWhatsApp) {
+      const waMsg = `Hello Monik's Salon, I saw the photo for "${title}" in your gallery and would like to know more.`;
+      lightboxWhatsApp.href = `https://wa.me/918446003385?text=${encodeURIComponent(waMsg)}`;
+    }
+
+    if (lightboxModal) {
+      lightboxModal.classList.remove('hidden');
+      lightboxModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeLightbox() {
+    if (lightboxModal) {
+      lightboxModal.classList.add('hidden');
+      lightboxModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Bind to cards
+  document.querySelectorAll('.gallery-clickable, .gallery-preview-btn').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      openLightbox(trigger as HTMLElement);
+    });
+    trigger.addEventListener('keydown', (e) => {
+      if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
+        e.preventDefault();
+        openLightbox(trigger as HTMLElement);
+      }
+    });
+  });
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeLightbox);
+  }
+
+  if (lightboxModal) {
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) {
+        closeLightbox();
+      }
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightboxModal && !lightboxModal.classList.contains('hidden')) {
+      closeLightbox();
+    }
+  });
+
+  if (lightboxFormBtn) {
+    lightboxFormBtn.addEventListener('click', () => {
+      closeLightbox();
+      if ((window as any).openEnquiryModal) {
+        (window as any).openEnquiryModal(`Gallery Interest: ${currentTitle}`);
+      }
+    });
+  }
 </script>
