@@ -52,3 +52,4 @@ for (const item of mapping) {
 }
 
 console.log('Finished processing all gallery images.');
+
